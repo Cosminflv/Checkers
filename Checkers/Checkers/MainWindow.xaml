@@ -3,10 +3,26 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Checkers"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        xmlns:viewmodels="clr-namespace:Checkers.ViewModels"
+        xmlns:views="clr-namespace:Checkers.Views"
+        Title="Checkers" Height="450" Width="800"
+        WindowStartupLocation="CenterScreen">
 
-    </Grid>
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type viewmodels:HomeVM}">
+            <views:HomeView/>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewmodels:GameVM}">
+            <views:GameView/>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewmodels:AboutVM}">
+            <views:AboutView/>
+        </DataTemplate>
+
+    </Window.Resources>
+
+    <ContentControl Content="{Binding SelectedVM}"/>
+    
 </Window>

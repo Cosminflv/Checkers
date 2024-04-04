@@ -1,53 +1,12 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\Informatica\\ANUL II\\MAP\\Checkers\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{646282B9-8BA7-4DE3-A400-884C3A045E97}|Checkers\\Checkers.csproj|d:\\informatica\\anul ii\\map\\checkers\\checkers\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{646282B9-8BA7-4DE3-A400-884C3A045E97}|Checkers\\Checkers.csproj|solutionrelative:checkers\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{646282B9-8BA7-4DE3-A400-884C3A045E97}|Checkers\\Checkers.csproj|d:\\informatica\\anul ii\\map\\checkers\\checkers\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{646282B9-8BA7-4DE3-A400-884C3A045E97}|Checkers\\Checkers.csproj|solutionrelative:checkers\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "WorkspaceRootPath": "D:\\Informatica\\ANUL II\\MAP\\MAPTema2\\Checkers\\",
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": [
-        {
-          "DockedWidth": 200,
-          "SelectedChildIndex": 0,
-          "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "MainWindow.xaml",
-              "DocumentMoniker": "D:\\Informatica\\ANUL II\\MAP\\Checkers\\Checkers\\MainWindow.xaml",
-              "RelativeDocumentMoniker": "Checkers\\MainWindow.xaml",
-              "ToolTip": "D:\\Informatica\\ANUL II\\MAP\\Checkers\\Checkers\\MainWindow.xaml",
-              "RelativeToolTip": "Checkers\\MainWindow.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-04-04T15:12:29.463Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "MainWindow.xaml.cs",
-              "DocumentMoniker": "D:\\Informatica\\ANUL II\\MAP\\Checkers\\Checkers\\MainWindow.xaml.cs",
-              "RelativeDocumentMoniker": "Checkers\\MainWindow.xaml.cs",
-              "ToolTip": "D:\\Informatica\\ANUL II\\MAP\\Checkers\\Checkers\\MainWindow.xaml.cs",
-              "RelativeToolTip": "Checkers\\MainWindow.xaml.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-04T15:12:25.647Z",
-              "EditorCaption": ""
-            }
-          ]
-        }
-      ]
+      "DocumentGroups": []
     }
   ]
 }
