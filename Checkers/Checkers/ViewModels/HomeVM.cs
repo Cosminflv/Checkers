@@ -4,6 +4,9 @@
     {
          class HomeVM : BaseVM
         {
+
+            // COMMANDS
+
             private ICommand switchToGameCommand;
 
             public ICommand SwitchToGameCommand

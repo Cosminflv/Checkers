@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Checkers.Views;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,10 @@ namespace Checkers.ViewModels
 
         public GameVM GameViewModel { get; set; }
 
+        public BoardVM BoardViewModel { get; set; }
+
+        public StatisticsVM StatisticsViewModel { get; set; }
+
         public MainWindowVM()
         {
             switchToHome();
@@ -38,15 +43,31 @@ namespace Checkers.ViewModels
         {
             GameViewModel = new GameVM();
             GameViewModel.OnSwitchToHome = switchToHome;
+            GameViewModel.OnSwitchToBoard = switchToBoard;
+            GameViewModel.OnSwitchToStatistics = switchToStatistics;
             SelectedVM = GameViewModel;
         }
 
-        private void switchToHome()
+        public void switchToHome()
         {
             HomeViewModel = new HomeVM();
             HomeViewModel.OnSwitchToAbout = switchToAbout;
             HomeViewModel.OnSwitchToGame = switchToGame;
             SelectedVM = HomeViewModel;
+        }
+
+        public void switchToBoard()
+        {
+            BoardViewModel = new BoardVM();
+            BoardViewModel.OnSwitchToGame = switchToGame;
+            SelectedVM = BoardViewModel;
+        }
+
+        public void switchToStatistics()
+        {
+            StatisticsViewModel = new StatisticsVM();
+            StatisticsViewModel.OnSwitchToGame = switchToGame;
+            SelectedVM = StatisticsViewModel;
         }
     }
 }
