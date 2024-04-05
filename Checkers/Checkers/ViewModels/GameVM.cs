@@ -1,4 +1,7 @@
-﻿using System.Windows.Input;
+﻿using Checkers.Models;
+using Checkers.Services;
+using System.Collections.ObjectModel;
+using System.Windows.Input;
 
 namespace Checkers.ViewModels
 {
@@ -24,7 +27,7 @@ namespace Checkers.ViewModels
             {
                 if (switchToHomeCommand == null)
                 {
-                    switchToHomeCommand = new RelayCommand(o => true, o => { OnSwitchToHome(); });
+                    switchToHomeCommand = new RelayPagesCommand(o => true, o => { OnSwitchToHome(); });
                 }
 
                 return switchToHomeCommand;
@@ -38,7 +41,7 @@ namespace Checkers.ViewModels
             {
                 if (switchToStatisticsCommand == null)
                 {
-                    switchToStatisticsCommand = new RelayCommand(o => true, o => { OnSwitchToStatistics(); });
+                    switchToStatisticsCommand = new RelayPagesCommand(o => true, o => { OnSwitchToStatistics(); });
                 }
 
                 return switchToStatisticsCommand;
@@ -53,7 +56,7 @@ namespace Checkers.ViewModels
             {
                 if (switchToBoardCommand == null) 
                 {
-                    switchToBoardCommand = new RelayCommand(o => true, o => { OnSwitchToBoard(); });
+                    switchToBoardCommand = new RelayPagesCommand(o => true, o => { OnSwitchToBoard(); });
                 }
                 return switchToBoardCommand;
             }
@@ -67,7 +70,7 @@ namespace Checkers.ViewModels
             {
                 if(buttonSaveGameCommand == null)
                 {
-                    buttonSaveGameCommand = new RelayCommand(o => true, o => { OnSaveGame(); });
+                    buttonSaveGameCommand = new RelayPagesCommand(o => true, o => { OnSaveGame(); });
                 }
             return buttonSaveGameCommand;
             }

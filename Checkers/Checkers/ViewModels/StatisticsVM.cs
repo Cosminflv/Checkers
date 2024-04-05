@@ -18,7 +18,7 @@ namespace Checkers.ViewModels
             {
                 if (switchToGameCommand == null)
                 {
-                    switchToGameCommand = new RelayCommand(o => true, o => { OnSwitchToGame(); });
+                    switchToGameCommand = new RelayPagesCommand(o => true, o => { OnSwitchToGame(); });
                 }
 
                 return switchToGameCommand;

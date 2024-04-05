@@ -25,7 +25,7 @@ namespace Checkers.ViewModels
             {
                 if(switchToHomeCommand == null)
                 {
-                    switchToHomeCommand = new RelayCommand(o => true, o => { OnSwitchToHome(); });
+                    switchToHomeCommand = new RelayPagesCommand(o => true, o => { OnSwitchToHome(); });
                 }
                 return switchToHomeCommand;
             }

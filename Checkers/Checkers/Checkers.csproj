@@ -9,7 +9,21 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\black_square.png" />
+    <None Remove="Resources\red_piece.png" />
+    <None Remove="Resources\white_piece.png" />
+    <None Remove="Resources\white_square.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Classes\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\black_square.png" />
+    <Resource Include="Resources\red_piece.png" />
+    <Resource Include="Resources\white_piece.png" />
+    <Resource Include="Resources\white_square.png" />
   </ItemGroup>
 
 </Project>

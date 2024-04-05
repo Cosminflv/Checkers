@@ -15,7 +15,7 @@
                 {
                     if(switchToGameCommand == null)
                     {
-                        switchToGameCommand = new RelayCommand(o => true, o => { OnSwitchToGame(); });
+                        switchToGameCommand = new RelayPagesCommand(o => true, o => { OnSwitchToGame(); });
                     }
 
                     return switchToGameCommand;
@@ -30,7 +30,7 @@
                 {
                     if(switchToAboutCommand == null)
                     {
-                        switchToAboutCommand = new RelayCommand(o => true, o => { OnSwitchToAbout(); });
+                        switchToAboutCommand = new RelayPagesCommand(o => true, o => { OnSwitchToAbout(); });
                     }
 
                     return switchToAboutCommand;
