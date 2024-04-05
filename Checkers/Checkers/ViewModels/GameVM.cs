@@ -12,7 +12,7 @@ namespace Checkers.ViewModels
         // COMMANDS
 
         private ICommand switchToHomeCommand;
-        public ICommand SwitchToMenuCommand
+        public ICommand SwitchToHomeCommand
         {
             get
             {
