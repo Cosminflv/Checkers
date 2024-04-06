@@ -31,7 +31,7 @@
 
         <TextBlock Margin="0,24,0,0" Style="{StaticResource CustomTextStyle}" Text="Red at move" HorizontalAlignment="Center"/>
 
-        <ItemsControl Name="grid" ItemsSource="{Binding GameBoard}" VerticalAlignment="Top" HorizontalAlignment="Center"  Margin="0,76,0,0" Height="482" Width="478">
+        <ItemsControl Name="grid" ItemsSource="{Binding GameBoard, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" HorizontalAlignment="Center"  Margin="0,76,0,0" Height="482" Width="478">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <ItemsControl ItemsSource="{Binding}">

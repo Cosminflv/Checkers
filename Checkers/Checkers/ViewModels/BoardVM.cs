@@ -21,7 +21,13 @@ namespace Checkers.ViewModels
             GameBoard = CellBoardToCellVMBoard(board);
         }
 
-        public ObservableCollection<ObservableCollection<CellVM>> GameBoard { get; set; }
+        private ObservableCollection<ObservableCollection<CellVM>> gameBoard;
+
+        public ObservableCollection<ObservableCollection<CellVM>> GameBoard
+        {
+            get { return gameBoard; }
+            set { gameBoard = value; OnPropertyChanged("GameBoard"); }
+        }
 
         // DELEGATES
 
@@ -55,7 +61,7 @@ namespace Checkers.ViewModels
                 for (int j = 0; j < board[i].Count; j++)
                 {
                     Cell c = board[i][j];
-                    CellVM cellVM = new CellVM(c.X, c.Y, c.HiddenImage, c.DisplayedImage, bl);
+                    CellVM cellVM = new CellVM(c.X, c.Y, c.HiddenImage, c.DisplayedImage, c.CellState, bl);
                     line.Add(cellVM);
                 }
                 result.Add(line);

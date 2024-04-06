@@ -5,12 +5,12 @@ using System.Windows.Input;
 
 namespace Checkers.ViewModels
 {
-    class CellVM
+    class CellVM : BaseVM
     {
         GameBusinessLogic bl;
-        public CellVM(int x, int y, string hidden, string displayed, GameBusinessLogic bl)
+        public CellVM(int x, int y, string hidden, string displayed, ECellState state, GameBusinessLogic bl)
         {
-            SimpleCell = new Cell(x, y, hidden, displayed);
+            SimpleCell = new Cell(x, y, hidden, displayed, state);
             this.bl = bl;
         }
         //am adus celula din Model in VM
