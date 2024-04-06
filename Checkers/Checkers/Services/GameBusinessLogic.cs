@@ -18,7 +18,8 @@ namespace Checkers.Services
 
         public void ClickAction(Cell obj)
         {
-            return;
+            int xPos = obj.X;
+            int yPos = obj.Y;
         }
     }
 }
