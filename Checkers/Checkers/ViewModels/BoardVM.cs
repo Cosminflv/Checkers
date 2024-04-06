@@ -18,6 +18,7 @@ namespace Checkers.ViewModels
         {
             ObservableCollection<ObservableCollection<Cell>> board = Helper.InitGameBoard();
             bl = new GameBusinessLogic(board);
+            bl.RedrawBoardRequested += OnRedrawBoardRequested;
             GameBoard = CellBoardToCellVMBoard(board);
         }
 
@@ -27,6 +28,18 @@ namespace Checkers.ViewModels
         {
             get { return gameBoard; }
             set { gameBoard = value; OnPropertyChanged("GameBoard"); }
+        }
+
+        private void OnRedrawBoardRequested(object sender, EventArgs e)
+        {
+            GameBoard.Clear();
+            //TODO
+            GameBoard = CellBoardToCellVMBoard(bl.Squares);
+        }
+
+        private void RedrawBoard()
+        {
+
         }
 
         // DELEGATES

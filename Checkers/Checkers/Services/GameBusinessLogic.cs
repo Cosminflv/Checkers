@@ -19,6 +19,14 @@ namespace Checkers.Services
             this.squares = squares;
         }
 
+        public ObservableCollection<ObservableCollection<Cell>> Squares
+        {
+            get { return squares; }
+            set { squares = value; }
+        }
+
+        public event EventHandler RedrawBoardRequested;
+
         public void ClickAction(Cell obj)
         {
             if (obj.CellState != ECellState.none)
@@ -37,44 +45,52 @@ namespace Checkers.Services
             }
         }
 
+        protected virtual void OnRedrawBoardRequested(EventArgs e)
+        {
+            RedrawBoardRequested?.Invoke(this, e);
+        }
+
         // PRIVATE METHODS
         private void Move(Cell cellToMoveOn)
         {
             Tuple<int, int>? redCapturedPosition = redCaptured(cellToMoveOn);
             Tuple<int, int>? whiteCapturedPosition = whiteCaptured(cellToMoveOn);
 
-            if(redCapturedPosition != null)
+            squares[cellToMoveOn.X][cellToMoveOn.Y].CellState = selectedSquare!.Item1.CellState;
+            squares[cellToMoveOn.X][cellToMoveOn.Y].DisplayedImage = selectedSquare!.Item1.DisplayedImage;
+
+            squares[selectedSquare.Item1.X][selectedSquare.Item1.Y].DisplayedImage = squares[selectedSquare.Item1.X][selectedSquare.Item1.Y].HiddenImage;
+
+            squares[selectedSquare.Item1.X][selectedSquare.Item1.Y].CellState = ECellState.none;
+          
+
+            selectedSquare = null;
+
+            if (redCapturedPosition != null)
             {
                 squares[redCapturedPosition.Item1][redCapturedPosition.Item2].CellState = ECellState.none;
                 squares[redCapturedPosition.Item1][redCapturedPosition.Item2].DisplayedImage = squares[redCapturedPosition.Item1][redCapturedPosition.Item2].HiddenImage;
+             
             }
 
             if(whiteCapturedPosition != null)
             {
                 squares[whiteCapturedPosition.Item1][whiteCapturedPosition.Item2].CellState = ECellState.none;
                 squares[whiteCapturedPosition.Item1][whiteCapturedPosition.Item2].DisplayedImage = squares[whiteCapturedPosition.Item1][whiteCapturedPosition.Item2].HiddenImage;
+        
             }
 
-            cellToMoveOn.CellState = selectedSquare!.Item1.CellState;
-            cellToMoveOn.DisplayedImage = selectedSquare.Item1.DisplayedImage;
-            selectedSquare.Item1.DisplayedImage = selectedSquare.Item1.HiddenImage;
-
-
-            squares[cellToMoveOn.X][cellToMoveOn.Y].CellState = selectedSquare!.Item1.CellState;
-            squares[selectedSquare.Item1.X][selectedSquare.Item1.Y].CellState = ECellState.none;
-            selectedSquare.Item1.CellState = ECellState.none;
-
-            selectedSquare = null;
+            OnRedrawBoardRequested(EventArgs.Empty);
         }
 
         private Tuple<int, int>? redCaptured(Cell cellToMoveOn)
         {
             if(selectedSquare!.Item1.X - cellToMoveOn.X == 2) // Piece advanced two rows
             {
-                if (squares[cellToMoveOn.X - 1][cellToMoveOn.Y - 1].CellState == ECellState.white)
-                    return new Tuple<int, int>(cellToMoveOn.X - 1, cellToMoveOn.Y - 1);
-                if (squares[cellToMoveOn.X - 1][cellToMoveOn.Y + 1].CellState == ECellState.white)
-                    return new Tuple<int, int>(cellToMoveOn.X - 1, cellToMoveOn.Y + 1);
+                if (squares[cellToMoveOn.X + 1][cellToMoveOn.Y - 1].CellState == ECellState.white)
+                    return new Tuple<int, int>(cellToMoveOn.X + 1, cellToMoveOn.Y - 1);
+                if (squares[cellToMoveOn.X + 1][cellToMoveOn.Y + 1].CellState == ECellState.white)
+                    return new Tuple<int, int>(cellToMoveOn.X + 1, cellToMoveOn.Y + 1);
             }
             return null;
         }
