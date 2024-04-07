@@ -3,7 +3,7 @@
   "WorkspaceRootPath": "D:\\Informatica\\ANUL II\\MAP\\MAPTema2\\Checkers\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{646282B9-8BA7-4DE3-A400-884C3A045E97}|Checkers\\Checkers.csproj|D:\\Informatica\\ANUL II\\MAP\\MAPTema2\\Checkers\\checkers\\services\\gamebusinesslogic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{646282B9-8BA7-4DE3-A400-884C3A045E97}|Checkers\\Checkers.csproj|d:\\informatica\\anul ii\\map\\maptema2\\checkers\\checkers\\services\\gamebusinesslogic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{646282B9-8BA7-4DE3-A400-884C3A045E97}|Checkers\\Checkers.csproj|solutionrelative:checkers\\services\\gamebusinesslogic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -15,7 +15,7 @@
       "RelativeMoniker": "D:0:0:{646282B9-8BA7-4DE3-A400-884C3A045E97}|Checkers\\Checkers.csproj|solutionrelative:checkers\\viewmodels\\cellwm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{646282B9-8BA7-4DE3-A400-884C3A045E97}|Checkers\\Checkers.csproj|d:\\informatica\\anul ii\\map\\maptema2\\checkers\\checkers\\models\\cell.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{646282B9-8BA7-4DE3-A400-884C3A045E97}|Checkers\\Checkers.csproj|D:\\Informatica\\ANUL II\\MAP\\MAPTema2\\Checkers\\checkers\\models\\cell.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{646282B9-8BA7-4DE3-A400-884C3A045E97}|Checkers\\Checkers.csproj|solutionrelative:checkers\\models\\cell.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -46,8 +46,7 @@
               "RelativeToolTip": "Checkers\\ViewModels\\BoardVM.cs",
               "ViewState": "AQIAABAAAAAAAAAAAAAkwCAAAAArAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-06T12:52:37.856Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-06T12:52:37.856Z"
             },
             {
               "$type": "Document",
@@ -59,8 +58,7 @@
               "RelativeToolTip": "Checkers\\Models\\Cell.cs",
               "ViewState": "AQIAABAAAAAAAAAAAAA1wCcAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-06T09:47:36.496Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-06T09:47:36.496Z"
             },
             {
               "$type": "Document",
@@ -72,8 +70,7 @@
               "RelativeToolTip": "Checkers\\Services\\Helper.cs",
               "ViewState": "AQIAAAYAAAAAAAAAAAAAABMAAAAUAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-06T11:50:10.863Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-06T11:50:10.863Z"
             },
             {
               "$type": "Document",
@@ -84,8 +81,7 @@
               "ToolTip": "D:\\Informatica\\ANUL II\\MAP\\MAPTema2\\Checkers\\Checkers\\Views\\BoardView.xaml",
               "RelativeToolTip": "Checkers\\Views\\BoardView.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-04-06T09:56:33.141Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-06T09:56:33.141Z"
             },
             {
               "$type": "Document",
@@ -97,8 +93,7 @@
               "RelativeToolTip": "Checkers\\ViewModels\\CellWM.cs",
               "ViewState": "AQIAAAMAAAAAAAAAAAAAAAgAAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-06T09:47:34.865Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-06T09:47:34.865Z"
             },
             {
               "$type": "Document",
@@ -108,7 +103,7 @@
               "RelativeDocumentMoniker": "Checkers\\Services\\GameBusinessLogic.cs",
               "ToolTip": "D:\\Informatica\\ANUL II\\MAP\\MAPTema2\\Checkers\\Checkers\\Services\\GameBusinessLogic.cs",
               "RelativeToolTip": "Checkers\\Services\\GameBusinessLogic.cs",
-              "ViewState": "AQIAAEcAAAAAAAAAAADwv1cAAAAMAAAA",
+              "ViewState": "AQIAAEwAAAAAAAAAAAAUwGEAAABBAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-06T09:42:16.201Z",
               "EditorCaption": ""

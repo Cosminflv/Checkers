@@ -87,10 +87,10 @@ namespace Checkers.Services
         {
             if(selectedSquare!.Item1.X - cellToMoveOn.X == 2) // Piece advanced two rows
             {
-                if (squares[cellToMoveOn.X + 1][cellToMoveOn.Y - 1].CellState == ECellState.white)
-                    return new Tuple<int, int>(cellToMoveOn.X + 1, cellToMoveOn.Y - 1);
-                if (squares[cellToMoveOn.X + 1][cellToMoveOn.Y + 1].CellState == ECellState.white)
-                    return new Tuple<int, int>(cellToMoveOn.X + 1, cellToMoveOn.Y + 1);
+                if (squares[cellToMoveOn.X + 1][selectedSquare!.Item1.Y - 1].CellState == ECellState.white)
+                    return new Tuple<int, int>(cellToMoveOn.X + 1, selectedSquare!.Item1.Y - 1);
+                if (squares[cellToMoveOn.X + 1][selectedSquare!.Item1.Y + 1].CellState == ECellState.white)
+                    return new Tuple<int, int>(cellToMoveOn.X + 1, selectedSquare!.Item1.Y + 1);
             }
             return null;
         }
@@ -99,10 +99,10 @@ namespace Checkers.Services
         {
             if (cellToMoveOn.X - selectedSquare!.Item1.X == 2) // Piece advanced two rows
             {
-                if (squares[cellToMoveOn.X - 1][cellToMoveOn.Y + 1].CellState == ECellState.red)
-                    return new Tuple<int, int>(cellToMoveOn.X - 1, cellToMoveOn.Y + 1);
-                if (squares[cellToMoveOn.X - 1][cellToMoveOn.Y - 1].CellState == ECellState.red)
-                    return new Tuple<int, int>(cellToMoveOn.X - 1, cellToMoveOn.Y - 1);
+                if (squares[cellToMoveOn.X - 1][selectedSquare!.Item1.Y + 1].CellState == ECellState.red)
+                    return new Tuple<int, int>(cellToMoveOn.X - 1, selectedSquare!.Item1.Y + 1);
+                if (squares[cellToMoveOn.X - 1][selectedSquare!.Item1.Y - 1].CellState == ECellState.red)
+                    return new Tuple<int, int>(cellToMoveOn.X - 1, selectedSquare!.Item1.Y - 1);
             }
             return null;
         }
