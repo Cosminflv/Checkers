@@ -3,10 +3,6 @@
   "WorkspaceRootPath": "D:\\Informatica\\ANUL II\\MAP\\MAPTema2\\Checkers\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{646282B9-8BA7-4DE3-A400-884C3A045E97}|Checkers\\Checkers.csproj|d:\\informatica\\anul ii\\map\\maptema2\\checkers\\checkers\\services\\gamebusinesslogic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{646282B9-8BA7-4DE3-A400-884C3A045E97}|Checkers\\Checkers.csproj|solutionrelative:checkers\\services\\gamebusinesslogic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{646282B9-8BA7-4DE3-A400-884C3A045E97}|Checkers\\Checkers.csproj|D:\\Informatica\\ANUL II\\MAP\\MAPTema2\\Checkers\\checkers\\viewmodels\\boardvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{646282B9-8BA7-4DE3-A400-884C3A045E97}|Checkers\\Checkers.csproj|solutionrelative:checkers\\viewmodels\\boardvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -15,12 +11,32 @@
       "RelativeMoniker": "D:0:0:{646282B9-8BA7-4DE3-A400-884C3A045E97}|Checkers\\Checkers.csproj|solutionrelative:checkers\\viewmodels\\cellwm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{646282B9-8BA7-4DE3-A400-884C3A045E97}|Checkers\\Checkers.csproj|D:\\Informatica\\ANUL II\\MAP\\MAPTema2\\Checkers\\checkers\\models\\cell.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{646282B9-8BA7-4DE3-A400-884C3A045E97}|Checkers\\Checkers.csproj|solutionrelative:checkers\\models\\cell.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{646282B9-8BA7-4DE3-A400-884C3A045E97}|Checkers\\Checkers.csproj|d:\\informatica\\anul ii\\map\\maptema2\\checkers\\checkers\\viewmodels\\gamevm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{646282B9-8BA7-4DE3-A400-884C3A045E97}|Checkers\\Checkers.csproj|solutionrelative:checkers\\viewmodels\\gamevm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{646282B9-8BA7-4DE3-A400-884C3A045E97}|Checkers\\Checkers.csproj|D:\\Informatica\\ANUL II\\MAP\\MAPTema2\\Checkers\\checkers\\services\\helper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{646282B9-8BA7-4DE3-A400-884C3A045E97}|Checkers\\Checkers.csproj|solutionrelative:checkers\\services\\helper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{646282B9-8BA7-4DE3-A400-884C3A045E97}|Checkers\\Checkers.csproj|d:\\informatica\\anul ii\\map\\maptema2\\checkers\\checkers\\services\\gamebusinesslogic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{646282B9-8BA7-4DE3-A400-884C3A045E97}|Checkers\\Checkers.csproj|solutionrelative:checkers\\services\\gamebusinesslogic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{646282B9-8BA7-4DE3-A400-884C3A045E97}|Checkers\\Checkers.csproj|D:\\Informatica\\ANUL II\\MAP\\MAPTema2\\Checkers\\checkers\\models\\cell.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{646282B9-8BA7-4DE3-A400-884C3A045E97}|Checkers\\Checkers.csproj|solutionrelative:checkers\\models\\cell.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{646282B9-8BA7-4DE3-A400-884C3A045E97}|Checkers\\Checkers.csproj|d:\\informatica\\anul ii\\map\\maptema2\\checkers\\checkers\\models\\basenotification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{646282B9-8BA7-4DE3-A400-884C3A045E97}|Checkers\\Checkers.csproj|solutionrelative:checkers\\models\\basenotification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{646282B9-8BA7-4DE3-A400-884C3A045E97}|Checkers\\Checkers.csproj|d:\\informatica\\anul ii\\map\\maptema2\\checkers\\checkers\\commands\\relaycommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{646282B9-8BA7-4DE3-A400-884C3A045E97}|Checkers\\Checkers.csproj|solutionrelative:checkers\\commands\\relaycommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{646282B9-8BA7-4DE3-A400-884C3A045E97}|Checkers\\Checkers.csproj|d:\\informatica\\anul ii\\map\\maptema2\\checkers\\checkers\\commands\\relaypagescommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{646282B9-8BA7-4DE3-A400-884C3A045E97}|Checkers\\Checkers.csproj|solutionrelative:checkers\\commands\\relaypagescommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{646282B9-8BA7-4DE3-A400-884C3A045E97}|Checkers\\Checkers.csproj|D:\\Informatica\\ANUL II\\MAP\\MAPTema2\\Checkers\\checkers\\views\\boardview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
@@ -34,35 +50,89 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
+              "Title": "GameVM.cs",
+              "DocumentMoniker": "D:\\Informatica\\ANUL II\\MAP\\MAPTema2\\Checkers\\Checkers\\ViewModels\\GameVM.cs",
+              "RelativeDocumentMoniker": "Checkers\\ViewModels\\GameVM.cs",
+              "ToolTip": "D:\\Informatica\\ANUL II\\MAP\\MAPTema2\\Checkers\\Checkers\\ViewModels\\GameVM.cs",
+              "RelativeToolTip": "Checkers\\ViewModels\\GameVM.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-07T15:38:25.812Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "BaseNotification.cs",
+              "DocumentMoniker": "D:\\Informatica\\ANUL II\\MAP\\MAPTema2\\Checkers\\Checkers\\Models\\BaseNotification.cs",
+              "RelativeDocumentMoniker": "Checkers\\Models\\BaseNotification.cs",
+              "ToolTip": "D:\\Informatica\\ANUL II\\MAP\\MAPTema2\\Checkers\\Checkers\\Models\\BaseNotification.cs",
+              "RelativeToolTip": "Checkers\\Models\\BaseNotification.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-07T15:38:04.849Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "RelayCommand.cs",
+              "DocumentMoniker": "D:\\Informatica\\ANUL II\\MAP\\MAPTema2\\Checkers\\Checkers\\Commands\\RelayCommand.cs",
+              "RelativeDocumentMoniker": "Checkers\\Commands\\RelayCommand.cs",
+              "ToolTip": "D:\\Informatica\\ANUL II\\MAP\\MAPTema2\\Checkers\\Checkers\\Commands\\RelayCommand.cs",
+              "RelativeToolTip": "Checkers\\Commands\\RelayCommand.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-07T15:38:03.959Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "RelayPagesCommand.cs",
+              "DocumentMoniker": "D:\\Informatica\\ANUL II\\MAP\\MAPTema2\\Checkers\\Checkers\\Commands\\RelayPagesCommand.cs",
+              "RelativeDocumentMoniker": "Checkers\\Commands\\RelayPagesCommand.cs",
+              "ToolTip": "D:\\Informatica\\ANUL II\\MAP\\MAPTema2\\Checkers\\Checkers\\Commands\\RelayPagesCommand.cs",
+              "RelativeToolTip": "Checkers\\Commands\\RelayPagesCommand.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-07T15:38:03.185Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
               "Title": "BoardVM.cs",
               "DocumentMoniker": "D:\\Informatica\\ANUL II\\MAP\\MAPTema2\\Checkers\\Checkers\\ViewModels\\BoardVM.cs",
               "RelativeDocumentMoniker": "Checkers\\ViewModels\\BoardVM.cs",
               "ToolTip": "D:\\Informatica\\ANUL II\\MAP\\MAPTema2\\Checkers\\Checkers\\ViewModels\\BoardVM.cs",
               "RelativeToolTip": "Checkers\\ViewModels\\BoardVM.cs",
-              "ViewState": "AQIAABAAAAAAAAAAAAAkwCAAAAArAAAA",
+              "ViewState": "AQIAABsAAAAAAAAAAAAmwDYAAAA6AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-06T12:52:37.856Z"
+              "WhenOpened": "2024-04-06T12:52:37.856Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "Cell.cs",
               "DocumentMoniker": "D:\\Informatica\\ANUL II\\MAP\\MAPTema2\\Checkers\\Checkers\\Models\\Cell.cs",
               "RelativeDocumentMoniker": "Checkers\\Models\\Cell.cs",
               "ToolTip": "D:\\Informatica\\ANUL II\\MAP\\MAPTema2\\Checkers\\Checkers\\Models\\Cell.cs",
               "RelativeToolTip": "Checkers\\Models\\Cell.cs",
-              "ViewState": "AQIAABAAAAAAAAAAAAA1wCcAAAAAAAAA",
+              "ViewState": "AQIAACEAAAAAAAAAAAAowCcAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-06T09:47:36.496Z"
+              "WhenOpened": "2024-04-06T09:47:36.496Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 3,
               "Title": "Helper.cs",
               "DocumentMoniker": "D:\\Informatica\\ANUL II\\MAP\\MAPTema2\\Checkers\\Checkers\\Services\\Helper.cs",
               "RelativeDocumentMoniker": "Checkers\\Services\\Helper.cs",
@@ -70,22 +140,12 @@
               "RelativeToolTip": "Checkers\\Services\\Helper.cs",
               "ViewState": "AQIAAAYAAAAAAAAAAAAAABMAAAAUAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-06T11:50:10.863Z"
+              "WhenOpened": "2024-04-06T11:50:10.863Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "BoardView.xaml",
-              "DocumentMoniker": "D:\\Informatica\\ANUL II\\MAP\\MAPTema2\\Checkers\\Checkers\\Views\\BoardView.xaml",
-              "RelativeDocumentMoniker": "Checkers\\Views\\BoardView.xaml",
-              "ToolTip": "D:\\Informatica\\ANUL II\\MAP\\MAPTema2\\Checkers\\Checkers\\Views\\BoardView.xaml",
-              "RelativeToolTip": "Checkers\\Views\\BoardView.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-04-06T09:56:33.141Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "CellWM.cs",
               "DocumentMoniker": "D:\\Informatica\\ANUL II\\MAP\\MAPTema2\\Checkers\\Checkers\\ViewModels\\CellWM.cs",
               "RelativeDocumentMoniker": "Checkers\\ViewModels\\CellWM.cs",
@@ -93,19 +153,53 @@
               "RelativeToolTip": "Checkers\\ViewModels\\CellWM.cs",
               "ViewState": "AQIAAAMAAAAAAAAAAAAAAAgAAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-06T09:47:34.865Z"
+              "WhenOpened": "2024-04-06T09:47:34.865Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 4,
               "Title": "GameBusinessLogic.cs",
               "DocumentMoniker": "D:\\Informatica\\ANUL II\\MAP\\MAPTema2\\Checkers\\Checkers\\Services\\GameBusinessLogic.cs",
               "RelativeDocumentMoniker": "Checkers\\Services\\GameBusinessLogic.cs",
               "ToolTip": "D:\\Informatica\\ANUL II\\MAP\\MAPTema2\\Checkers\\Checkers\\Services\\GameBusinessLogic.cs",
               "RelativeToolTip": "Checkers\\Services\\GameBusinessLogic.cs",
-              "ViewState": "AQIAAEwAAAAAAAAAAAAUwGEAAABBAAAA",
+              "ViewState": "AQIAADcAAAAAAAAAAAAcwF0AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-06T09:42:16.201Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "FloatingWindowState": {
+        "Id": "81109504-3d8c-4fce-8a6d-09eaa945dcd5",
+        "Display": 0,
+        "X": 32,
+        "Y": 72,
+        "Width": 1541,
+        "Height": 954,
+        "WindowState": 0
+      },
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "BoardView.xaml",
+              "DocumentMoniker": "D:\\Informatica\\ANUL II\\MAP\\MAPTema2\\Checkers\\Checkers\\Views\\BoardView.xaml",
+              "RelativeDocumentMoniker": "Checkers\\Views\\BoardView.xaml",
+              "ToolTip": "D:\\Informatica\\ANUL II\\MAP\\MAPTema2\\Checkers\\Checkers\\Views\\BoardView.xaml",
+              "RelativeToolTip": "Checkers\\Views\\BoardView.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-04-06T09:56:33.141Z",
               "EditorCaption": ""
             }
           ]

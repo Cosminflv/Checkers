@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Security.AccessControl;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -19,6 +20,8 @@ namespace Checkers.ViewModels
             ObservableCollection<ObservableCollection<Cell>> board = Helper.InitGameBoard();
             bl = new GameBusinessLogic(board);
             bl.RedrawBoardRequested += OnRedrawBoardRequested;
+            whiteRemainingPieces = bl.WhiteRemainingPieces;
+            redRemainingPieces = bl.RedRemainingPieces;
             GameBoard = CellBoardToCellVMBoard(board);
         }
 
@@ -30,11 +33,28 @@ namespace Checkers.ViewModels
             set { gameBoard = value; OnPropertyChanged("GameBoard"); }
         }
 
+        private int whiteRemainingPieces;
+
+        private int redRemainingPieces;
+
+        public int WhiteRemainingPieces
+        {
+            get { return whiteRemainingPieces; }
+            set { whiteRemainingPieces = value; OnPropertyChanged("WhiteRemainingPieces"); }
+        }
+
+        public int RedRemainingPieces
+        {
+            get { return redRemainingPieces; }
+            set { redRemainingPieces = value; OnPropertyChanged("RedRemainingPieces"); }
+        }
+
         private void OnRedrawBoardRequested(object sender, EventArgs e)
         {
             GameBoard.Clear();
-            //TODO
             GameBoard = CellBoardToCellVMBoard(bl.Squares);
+            WhiteRemainingPieces = bl.WhiteRemainingPieces;
+            RedRemainingPieces = bl.RedRemainingPieces;
         }
 
         private void RedrawBoard()

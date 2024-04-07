@@ -13,10 +13,28 @@ namespace Checkers.Services
     {
         private ObservableCollection<ObservableCollection<Cell>> squares;
 
+        private int whiteRemainingPieces;
+
+        private int redRemainingPieces;
+
         private Tuple<Cell, ObservableCollection<Cell>>? selectedSquare;
         public GameBusinessLogic(ObservableCollection<ObservableCollection<Cell>> squares)
         {
             this.squares = squares;
+            whiteRemainingPieces = 12;
+            redRemainingPieces = 12;
+        }
+
+        public int WhiteRemainingPieces
+        {
+            get { return whiteRemainingPieces; }
+            set { whiteRemainingPieces = value; }
+        }
+
+        public int RedRemainingPieces
+        {
+            get { return redRemainingPieces; }
+            set { redRemainingPieces = value; }
         }
 
         public ObservableCollection<ObservableCollection<Cell>> Squares
@@ -70,6 +88,7 @@ namespace Checkers.Services
             {
                 squares[redCapturedPosition.Item1][redCapturedPosition.Item2].CellState = ECellState.none;
                 squares[redCapturedPosition.Item1][redCapturedPosition.Item2].DisplayedImage = squares[redCapturedPosition.Item1][redCapturedPosition.Item2].HiddenImage;
+                whiteRemainingPieces -= 1;
              
             }
 
@@ -77,6 +96,7 @@ namespace Checkers.Services
             {
                 squares[whiteCapturedPosition.Item1][whiteCapturedPosition.Item2].CellState = ECellState.none;
                 squares[whiteCapturedPosition.Item1][whiteCapturedPosition.Item2].DisplayedImage = squares[whiteCapturedPosition.Item1][whiteCapturedPosition.Item2].HiddenImage;
+                redRemainingPieces -= 1;
         
             }
 
