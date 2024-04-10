@@ -14,6 +14,12 @@ namespace Checkers.Models
         none
     }
 
+    enum EPlayerTurn
+    {
+        white,
+        red
+    }
+
     class Cell : BaseNotification
     {
         private int x;

@@ -11,6 +11,8 @@ namespace Checkers.Services
 {
     class GameBusinessLogic
     {
+        private EPlayerTurn playerTurn;
+
         private ObservableCollection<ObservableCollection<Cell>> squares;
 
         private int whiteRemainingPieces;
@@ -23,6 +25,13 @@ namespace Checkers.Services
             this.squares = squares;
             whiteRemainingPieces = 12;
             redRemainingPieces = 12;
+            playerTurn = EPlayerTurn.red;
+        }
+
+        public EPlayerTurn PlayerTurn
+        {
+            get { return playerTurn; }
+            set { playerTurn = value; }
         }
 
         public int WhiteRemainingPieces
@@ -47,7 +56,7 @@ namespace Checkers.Services
 
         public void ClickAction(Cell obj)
         {
-            if (obj.CellState != ECellState.none)
+            if (obj.CellState != ECellState.none && IsCorrectPlayerTurn(obj.CellState, playerTurn))
             {
                 ObservableCollection<Cell> possibleMoves = GetPossibleMoves(obj);
                 selectedSquare = new Tuple<Cell, ObservableCollection<Cell>> (obj, possibleMoves);
@@ -59,6 +68,9 @@ namespace Checkers.Services
                 {
                     //EXECUTE MOVE
                     Move(obj);
+                    SwitchTurn();
+                    OnRedrawBoardRequested(EventArgs.Empty);
+
                 }
             }
         }
@@ -100,7 +112,7 @@ namespace Checkers.Services
         
             }
 
-            OnRedrawBoardRequested(EventArgs.Empty);
+            
         }
 
         private Tuple<int, int>? redCaptured(Cell cellToMoveOn)
@@ -196,6 +208,28 @@ namespace Checkers.Services
             {
                 possibleMoves.Add(squares[captureX][captureY]);
             }
+        }
+
+        private bool IsCorrectPlayerTurn(ECellState cellState, EPlayerTurn turn)
+        {
+            if (cellState == ECellState.red && turn == EPlayerTurn.red) return true;
+            if (cellState == ECellState.white && turn == EPlayerTurn.white) return true;
+            return false;
+        }
+
+        private void SwitchTurn()
+        {
+            if (playerTurn == EPlayerTurn.white)
+            {
+                playerTurn = EPlayerTurn.red;
+                return;
+            }
+            if (playerTurn == EPlayerTurn.red)
+            {
+                playerTurn = EPlayerTurn.white;
+                return;
+            }
+
         }
     }
 }

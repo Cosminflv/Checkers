@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:converters="clr-namespace:Checkers.Converters"
              xmlns:local="clr-namespace:Checkers.Views"
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="800">
@@ -10,6 +11,8 @@
 
 
     <UserControl.Resources>
+        <converters:EnumToStringConverter x:Key="EnumToStringConverter"/>
+        
         <Color x:Key="CustomGrayColor">#dadee6</Color>
 
         <SolidColorBrush x:Key="CustomGrayBrush" Color="{StaticResource CustomGrayColor}"/>
@@ -29,7 +32,8 @@
             <Image Source="D:\Informatica\ANUL II\MAP\MAPTema1\Tema1\images\back_icon.png" Stretch="Fill" Width="30"/>
         </Button>
 
-        <TextBlock Margin="0,24,0,0" Style="{StaticResource CustomTextStyle}" Text="Red at move" HorizontalAlignment="Center"/>
+
+        <TextBlock Text="{Binding CurrentTurn, Converter={StaticResource EnumToStringConverter}}" Margin="0,24,0,0" Style="{StaticResource CustomTextStyle}" HorizontalAlignment="Center" />
         <TextBlock Margin="639,285,0,0" Style="{StaticResource CustomTextStyle}" Text="{Binding RedRemainingPieces}" Foreground="Red"/>
         <TextBlock Margin="639,317,0,0" Style="{StaticResource CustomTextStyle}" Text="{Binding WhiteRemainingPieces}" Foreground="White"/>
 
