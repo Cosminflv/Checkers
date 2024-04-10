@@ -11,8 +11,9 @@
 
 
     <UserControl.Resources>
-        <converters:EnumToStringConverter x:Key="EnumToStringConverter"/>
-        
+        <converters:PlayerTurnToStringConverter x:Key="PlayerTurnToStringConverter"/>
+        <converters:PlayerWonToStringConverter x:Key="PlayerWonToStringConverter"/>
+
         <Color x:Key="CustomGrayColor">#dadee6</Color>
 
         <SolidColorBrush x:Key="CustomGrayBrush" Color="{StaticResource CustomGrayColor}"/>
@@ -33,7 +34,7 @@
         </Button>
 
 
-        <TextBlock Text="{Binding CurrentTurn, Converter={StaticResource EnumToStringConverter}}" Margin="0,24,0,0" Style="{StaticResource CustomTextStyle}" HorizontalAlignment="Center" />
+        <TextBlock Text="{Binding CurrentTurn, Converter={StaticResource PlayerTurnToStringConverter}}" Margin="0,10,0,0" Style="{StaticResource CustomTextStyle}" HorizontalAlignment="Center" />
         <TextBlock Margin="639,285,0,0" Style="{StaticResource CustomTextStyle}" Text="{Binding RedRemainingPieces}" Foreground="Red"/>
         <TextBlock Margin="639,317,0,0" Style="{StaticResource CustomTextStyle}" Text="{Binding WhiteRemainingPieces}" Foreground="White"/>
 
@@ -63,6 +64,7 @@
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
+        <TextBlock  Text="{Binding PlayerWon, Converter={StaticResource PlayerWonToStringConverter}}" Style="{StaticResource CustomTextStyle}" HorizontalAlignment="Center" Margin="0,42,0,0"/>
 
     </Grid>
 </UserControl>

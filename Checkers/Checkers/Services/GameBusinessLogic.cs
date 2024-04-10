@@ -11,7 +11,9 @@ namespace Checkers.Services
 {
     class GameBusinessLogic
     {
-        private EPlayerTurn playerTurn;
+        private EPlayerType playerTurn;
+
+        private ECellState playerWon;
 
         private ObservableCollection<ObservableCollection<Cell>> squares;
 
@@ -25,10 +27,17 @@ namespace Checkers.Services
             this.squares = squares;
             whiteRemainingPieces = 12;
             redRemainingPieces = 12;
-            playerTurn = EPlayerTurn.red;
+            playerTurn = EPlayerType.red;
+            playerWon = ECellState.none;
         }
 
-        public EPlayerTurn PlayerTurn
+        public ECellState PlayerWon
+        {
+            get { return playerWon; }
+            set { playerWon = value; }
+        }
+
+        public EPlayerType PlayerTurn
         {
             get { return playerTurn; }
             set { playerTurn = value; }
@@ -56,7 +65,7 @@ namespace Checkers.Services
 
         public void ClickAction(Cell obj)
         {
-            if (obj.CellState != ECellState.none && IsCorrectPlayerTurn(obj.CellState, playerTurn))
+            if (obj.CellState != ECellState.none && IsCorrectPlayerTurn(obj.CellState, playerTurn) && !isGameOver())
             {
                 ObservableCollection<Cell> possibleMoves = GetPossibleMoves(obj);
                 selectedSquare = new Tuple<Cell, ObservableCollection<Cell>> (obj, possibleMoves);
@@ -111,8 +120,8 @@ namespace Checkers.Services
                 redRemainingPieces -= 1;
         
             }
-
-            
+            if(whiteWon()) playerWon = ECellState.white;
+            if(redWon()) playerWon = ECellState.red;
         }
 
         private Tuple<int, int>? redCaptured(Cell cellToMoveOn)
@@ -210,26 +219,40 @@ namespace Checkers.Services
             }
         }
 
-        private bool IsCorrectPlayerTurn(ECellState cellState, EPlayerTurn turn)
+        private bool IsCorrectPlayerTurn(ECellState cellState, EPlayerType turn)
         {
-            if (cellState == ECellState.red && turn == EPlayerTurn.red) return true;
-            if (cellState == ECellState.white && turn == EPlayerTurn.white) return true;
+            if (cellState == ECellState.red && turn == EPlayerType.red) return true;
+            if (cellState == ECellState.white && turn == EPlayerType.white) return true;
             return false;
         }
 
         private void SwitchTurn()
         {
-            if (playerTurn == EPlayerTurn.white)
+            if (playerTurn == EPlayerType.white)
             {
-                playerTurn = EPlayerTurn.red;
+                playerTurn = EPlayerType.red;
                 return;
             }
-            if (playerTurn == EPlayerTurn.red)
+            if (playerTurn == EPlayerType.red)
             {
-                playerTurn = EPlayerTurn.white;
+                playerTurn = EPlayerType.white;
                 return;
             }
+        }
 
+        private bool isGameOver()
+        {
+            return whiteWon() || redWon();
+        }
+
+        private bool whiteWon()
+        {
+            return redRemainingPieces == 0;
+        }
+
+        private bool redWon()
+        {
+            return whiteRemainingPieces == 0;
         }
     }
 }

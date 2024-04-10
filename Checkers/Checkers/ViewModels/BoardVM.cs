@@ -23,7 +23,8 @@ namespace Checkers.ViewModels
             whiteRemainingPieces = bl.WhiteRemainingPieces;
             redRemainingPieces = bl.RedRemainingPieces;
             GameBoard = CellBoardToCellVMBoard(board);
-            currentTurn = EPlayerTurn.red;
+            currentTurn = EPlayerType.red;
+            playerWon = ECellState.none;
         }
 
         private ObservableCollection<ObservableCollection<CellVM>> gameBoard;
@@ -38,7 +39,9 @@ namespace Checkers.ViewModels
 
         private int redRemainingPieces;
 
-        private EPlayerTurn currentTurn;
+        private EPlayerType currentTurn;
+
+        private ECellState playerWon;
 
         public int WhiteRemainingPieces
         {
@@ -52,7 +55,7 @@ namespace Checkers.ViewModels
             set { redRemainingPieces = value; OnPropertyChanged("RedRemainingPieces"); }
         }
 
-        public EPlayerTurn CurrentTurn
+        public EPlayerType CurrentTurn
         {
             get { return currentTurn; }
             set
@@ -65,6 +68,19 @@ namespace Checkers.ViewModels
             }
         }
 
+        public ECellState PlayerWon
+        {
+            get { return playerWon; }
+            set
+            {
+                if (playerWon != value)
+                {
+                    playerWon = value;
+                    OnPropertyChanged("PlayerWon");
+                }
+            }
+        }
+
         private void OnRedrawBoardRequested(object sender, EventArgs e)
         {
             GameBoard.Clear();
@@ -72,6 +88,8 @@ namespace Checkers.ViewModels
             WhiteRemainingPieces = bl.WhiteRemainingPieces;
             RedRemainingPieces = bl.RedRemainingPieces;
             CurrentTurn = bl.PlayerTurn;
+            PlayerWon = bl.PlayerWon;
+
         }
 
         // DELEGATES

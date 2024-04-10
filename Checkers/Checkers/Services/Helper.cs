@@ -118,13 +118,13 @@ public class EnumToStringConverter : IValueConverter
 {
     public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
     {
-        if (value is EPlayerTurn turn)
+        if (value is EPlayerType turn)
         {
             switch (turn)
             {
-                case EPlayerTurn.white:
+                case EPlayerType.white:
                     return "White to move";
-                case EPlayerTurn.red:
+                case EPlayerType.red:
                     return "Red to move";
                 default:
                     return "";

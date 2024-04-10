@@ -14,7 +14,7 @@ namespace Checkers.Models
         none
     }
 
-    enum EPlayerTurn
+    enum EPlayerType
     {
         white,
         red
