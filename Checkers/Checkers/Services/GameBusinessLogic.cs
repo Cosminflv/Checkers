@@ -189,6 +189,11 @@ namespace Checkers.Services
                 hasCaptured = true;
             }
 
+            if (CanPromote(squares[cellToMoveOn.X][cellToMoveOn.Y].X, squares[cellToMoveOn.X][cellToMoveOn.Y].CellState))
+            {
+                Promote(squares[cellToMoveOn.X][cellToMoveOn.Y]);
+            }
+
             if (whiteWon()) playerWon = ECellState.white;
             if (redWon()) playerWon = ECellState.red;
             return hasCaptured;
@@ -323,6 +328,19 @@ namespace Checkers.Services
                 playerTurn = EPlayerType.white;
                 return;
             }
+        }
+
+        private bool CanPromote(int x, ECellState state)
+        {
+            if (x == 0 && state == ECellState.red) return true;
+            if (x == 7 && state == ECellState.white) return true;
+            return false;
+        }
+
+        private void Promote(Cell c)
+        {
+            c.IsKing = true;
+            c.DisplayedImage = "/Checkers;component/Resources/king_piece.png";
         }
 
         private bool isGameOver()
