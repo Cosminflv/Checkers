@@ -15,10 +15,10 @@ namespace Checkers.ViewModels
     {
         private GameBusinessLogic bl;
 
-        public BoardVM()
+        public BoardVM(GameVM gameViewModel)
         {
             ObservableCollection<ObservableCollection<Cell>> board = Helper.InitGameBoard();
-            bl = new GameBusinessLogic(board);
+            bl = new GameBusinessLogic(board, gameViewModel.AllowMultipleJump);
             bl.RedrawBoardRequested += OnRedrawBoardRequested;
             whiteRemainingPieces = bl.WhiteRemainingPieces;
             redRemainingPieces = bl.RedRemainingPieces;

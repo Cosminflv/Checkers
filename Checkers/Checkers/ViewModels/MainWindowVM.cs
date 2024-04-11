@@ -58,7 +58,7 @@ namespace Checkers.ViewModels
 
         public void switchToBoard()
         {
-            BoardViewModel = new BoardVM();
+            BoardViewModel = new BoardVM(GameViewModel);
             BoardViewModel.OnSwitchToGame = switchToGame;
             SelectedVM = BoardViewModel;
         }

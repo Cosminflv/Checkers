@@ -35,7 +35,7 @@
         <Button Content="Save Game" HorizontalAlignment="Center" Margin="0,180,0,0" VerticalAlignment="Top" Height="55" Width="180"/>
         <Button Content="Open Game" HorizontalAlignment="Center" Margin="0,240,0,0" VerticalAlignment="Top" Height="55" Width="180"/>
         <Button Content="Statistics" Command="{Binding SwitchToStatisticsCommand}" HorizontalAlignment="Center" Margin="0,300,0,0" VerticalAlignment="Top" Height="55" Width="180"/>
-        <RadioButton Content="Allow Multiple Jump" HorizontalAlignment="Left" Margin="310,375,0,0" VerticalAlignment="Top"/>
+        <CheckBox Content="Allow Multiple Jump" IsChecked="{Binding AllowMultipleJump}" HorizontalAlignment="Left" Margin="310,375,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </UserControl>

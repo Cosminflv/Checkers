@@ -7,6 +7,21 @@ namespace Checkers.ViewModels
 {
     class GameVM : BaseVM
     {
+
+        private bool allowMultipleJump;
+        public bool AllowMultipleJump
+        {
+            get { return allowMultipleJump; }
+            set
+            {
+                if (allowMultipleJump != value)
+                {
+                    allowMultipleJump = value;
+                    OnPropertyChanged("AllowMultipleJump");
+                }
+            }
+        }
+
         // DELEGATES
 
         public delegate void SwitchToHome();
