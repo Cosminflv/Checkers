@@ -8,9 +8,9 @@ namespace Checkers.ViewModels
     class CellVM : BaseVM
     {
         GameBusinessLogic bl;
-        public CellVM(int x, int y, string hidden, string displayed, ECellState state, GameBusinessLogic bl)
+        public CellVM(int x, int y, string hidden, string displayed, ECellState state, bool isKing, GameBusinessLogic bl)
         {
-            SimpleCell = new Cell(x, y, hidden, displayed, state);
+            SimpleCell = new Cell(x, y, hidden, displayed, state, isKing);
             this.bl = bl;
         }
         //am adus celula din Model in VM

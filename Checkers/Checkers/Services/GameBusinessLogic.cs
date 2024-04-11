@@ -205,13 +205,18 @@ namespace Checkers.Services
             if (selectedSquare!.Item1.X - cellToMoveOn.X == 2) // Piece advanced two rows
             {
 
-                // TOP LEFT CAPTURE
-                if (squares[cellToMoveOn.X + 1][cellToMoveOn.Y - 1].CellState == ECellState.white && selectedSquare!.Item1.X - 1 == cellToMoveOn.X + 1 && selectedSquare!.Item1.Y + 1 == cellToMoveOn.Y - 1)
-                    return new Tuple<int, int>(cellToMoveOn.X + 1, cellToMoveOn.Y - 1);
-                // TOP RIGHT CAPTURE
-                if (squares[cellToMoveOn.X + 1][cellToMoveOn.Y + 1].CellState == ECellState.white && selectedSquare!.Item1.X - 1 == cellToMoveOn.X + 1 && selectedSquare!.Item1.Y - 1 == cellToMoveOn.Y + 1)
-                    return new Tuple<int, int>(cellToMoveOn.X + 1, cellToMoveOn.Y + 1);
-
+                if (isInBoard(cellToMoveOn.X + 1, cellToMoveOn.Y - 1))
+                {
+                    // TOP LEFT CAPTURE
+                    if (squares[cellToMoveOn.X + 1][cellToMoveOn.Y - 1].CellState == ECellState.white && selectedSquare!.Item1.X - 1 == cellToMoveOn.X + 1 && selectedSquare!.Item1.Y + 1 == cellToMoveOn.Y - 1)
+                        return new Tuple<int, int>(cellToMoveOn.X + 1, cellToMoveOn.Y - 1);
+                }
+                if (isInBoard(cellToMoveOn.X + 1, cellToMoveOn.Y + 1))
+                {
+                    // TOP RIGHT CAPTURE
+                    if (squares[cellToMoveOn.X + 1][cellToMoveOn.Y + 1].CellState == ECellState.white && selectedSquare!.Item1.X - 1 == cellToMoveOn.X + 1 && selectedSquare!.Item1.Y - 1 == cellToMoveOn.Y + 1)
+                        return new Tuple<int, int>(cellToMoveOn.X + 1, cellToMoveOn.Y + 1);
+                }
             }
             return null;
         }
@@ -282,6 +287,16 @@ namespace Checkers.Services
 
             AddNormalMove(obj.X - 1, obj.Y + 1, possibleMoves);
             AddCaptureMove(obj.X - 1, obj.Y + 1, obj.X - 2, obj.Y + 2, ECellState.white, possibleMoves);
+
+
+            if (obj.IsKing)
+            {
+                AddNormalMove(obj.X + 1, obj.Y - 1, possibleMoves);
+                AddCaptureMove(obj.X + 1, obj.Y - 1, obj.X + 2, obj.Y - 2, ECellState.white, possibleMoves);
+
+                AddNormalMove(obj.X + 1, obj.Y + 1, possibleMoves);
+                AddCaptureMove(obj.X + 1, obj.Y + 1, obj.X + 2, obj.Y + 2, ECellState.white, possibleMoves);
+            }
         }
 
         private void AddPossibleMovesForWhite(Cell obj, ObservableCollection<Cell> possibleMoves)
@@ -291,6 +306,15 @@ namespace Checkers.Services
 
             AddNormalMove(obj.X + 1, obj.Y + 1, possibleMoves);
             AddCaptureMove(obj.X + 1, obj.Y + 1, obj.X + 2, obj.Y + 2, ECellState.red, possibleMoves);
+
+            if (obj.IsKing)
+            {
+                AddNormalMove(obj.X - 1, obj.Y - 1, possibleMoves);
+                AddCaptureMove(obj.X - 1, obj.Y - 1, obj.X - 2, obj.Y - 2, ECellState.red, possibleMoves);
+
+                AddNormalMove(obj.X - 1, obj.Y + 1, possibleMoves);
+                AddCaptureMove(obj.X - 1, obj.Y + 1, obj.X - 2, obj.Y + 2, ECellState.red, possibleMoves);
+            }
         }
 
         private void AddNormalMove(int x, int y, ObservableCollection<Cell> possibleMoves)

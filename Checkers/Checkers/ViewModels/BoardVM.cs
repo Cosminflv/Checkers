@@ -124,7 +124,7 @@ namespace Checkers.ViewModels
                 for (int j = 0; j < board[i].Count; j++)
                 {
                     Cell c = board[i][j];
-                    CellVM cellVM = new CellVM(c.X, c.Y, c.HiddenImage, c.DisplayedImage, c.CellState, bl);
+                    CellVM cellVM = new CellVM(c.X, c.Y, c.HiddenImage, c.DisplayedImage, c.CellState, c.IsKing, bl);
                     line.Add(cellVM);
                 }
                 result.Add(line);

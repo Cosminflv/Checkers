@@ -29,14 +29,14 @@ namespace Checkers.Models
         private ECellState cellState;
         private bool isKing;
 
-        public Cell(int x, int y, string hidden, string displayed, ECellState cellstate)
+        public Cell(int x, int y, string hidden, string displayed, ECellState cellstate, bool isKing)
         {
             this.X = x;
             this.Y = y;
             this.HiddenImage = hidden;
             this.DisplayedImage = displayed;
             this.CellState = cellstate;
-            this.isKing = false;
+            this.isKing = isKing;
         }
 
         public ECellState CellState
