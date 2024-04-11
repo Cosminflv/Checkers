@@ -27,6 +27,7 @@ namespace Checkers.Models
         private string displayedImage;
         private string hiddenImage;
         private ECellState cellState;
+        private bool isKing;
 
         public Cell(int x, int y, string hidden, string displayed, ECellState cellstate)
         {
@@ -35,6 +36,7 @@ namespace Checkers.Models
             this.HiddenImage = hidden;
             this.DisplayedImage = displayed;
             this.CellState = cellstate;
+            this.isKing = false;
         }
 
         public ECellState CellState
@@ -67,9 +69,10 @@ namespace Checkers.Models
             set { hiddenImage = value; NotifyPropertyChanged("HiddenImage");}
         }
 
-        public bool isOccupied()
+        public bool IsKing
         {
-            return cellState != ECellState.none;
+            get { return isKing; }
+            set { isKing = value; NotifyPropertyChanged("IsKing"); }
         }
     }
 }

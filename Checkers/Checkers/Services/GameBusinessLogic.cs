@@ -77,10 +77,10 @@ namespace Checkers.Services
             {
                 ObservableCollection<Cell> possibleMoves = possibleMultipleJumpMoves.Count > 0 ? possibleMultipleJumpMoves : GetPossibleMoves(obj);
 
-                selectedSquare = new Tuple<Cell, ObservableCollection<Cell>> (obj, possibleMoves);
+                selectedSquare = new Tuple<Cell, ObservableCollection<Cell>>(obj, possibleMoves);
             }
 
-            if(obj.CellState == ECellState.none && selectedSquare != null)
+            if (obj.CellState == ECellState.none && selectedSquare != null)
             {
                 if (isMovePossible(obj))
                 {
@@ -95,14 +95,14 @@ namespace Checkers.Services
                         if (multipleJumpsAllowed)
                         {
                             ScanForJumpingOportunities(obj);
-                            
+
                         }
-                        if(possibleMultipleJumpMoves.Count == 0)
+                        if (possibleMultipleJumpMoves.Count == 0)
                         {
                             SwitchTurn();
                         }
                     }
-                    
+
                     OnRedrawBoardRequested(EventArgs.Empty);
                 }
             }
@@ -130,7 +130,7 @@ namespace Checkers.Services
                 return;
             }
 
-            if(squares[obj.X][obj.Y].CellState == ECellState.white)
+            if (squares[obj.X][obj.Y].CellState == ECellState.white)
             {
                 if (isInBoard(obj.X + 2, obj.Y - 2))
                 {
@@ -169,7 +169,7 @@ namespace Checkers.Services
             squares[selectedSquare.Item1.X][selectedSquare.Item1.Y].DisplayedImage = squares[selectedSquare.Item1.X][selectedSquare.Item1.Y].HiddenImage;
 
             squares[selectedSquare.Item1.X][selectedSquare.Item1.Y].CellState = ECellState.none;
-          
+
 
             selectedSquare = null;
 
@@ -181,7 +181,7 @@ namespace Checkers.Services
                 hasCaptured = true;
             }
 
-            if(whiteCapturedPosition != null)
+            if (whiteCapturedPosition != null)
             {
                 squares[whiteCapturedPosition.Item1][whiteCapturedPosition.Item2].CellState = ECellState.none;
                 squares[whiteCapturedPosition.Item1][whiteCapturedPosition.Item2].DisplayedImage = squares[whiteCapturedPosition.Item1][whiteCapturedPosition.Item2].HiddenImage;
@@ -189,22 +189,24 @@ namespace Checkers.Services
                 hasCaptured = true;
             }
 
-            if(whiteWon()) playerWon = ECellState.white;
-            if(redWon()) playerWon = ECellState.red;
+            if (whiteWon()) playerWon = ECellState.white;
+            if (redWon()) playerWon = ECellState.red;
             return hasCaptured;
         }
 
         private Tuple<int, int>? redCaptured(Cell cellToMoveOn)
         {
 
-            if(selectedSquare!.Item1.X - cellToMoveOn.X == 2) // Piece advanced two rows
+            if (selectedSquare!.Item1.X - cellToMoveOn.X == 2) // Piece advanced two rows
             {
+
                 // TOP LEFT CAPTURE
                 if (squares[cellToMoveOn.X + 1][cellToMoveOn.Y - 1].CellState == ECellState.white && selectedSquare!.Item1.X - 1 == cellToMoveOn.X + 1 && selectedSquare!.Item1.Y + 1 == cellToMoveOn.Y - 1)
                     return new Tuple<int, int>(cellToMoveOn.X + 1, cellToMoveOn.Y - 1);
                 // TOP RIGHT CAPTURE
                 if (squares[cellToMoveOn.X + 1][cellToMoveOn.Y + 1].CellState == ECellState.white && selectedSquare!.Item1.X - 1 == cellToMoveOn.X + 1 && selectedSquare!.Item1.Y - 1 == cellToMoveOn.Y + 1)
                     return new Tuple<int, int>(cellToMoveOn.X + 1, cellToMoveOn.Y + 1);
+
             }
             return null;
         }
@@ -213,12 +215,20 @@ namespace Checkers.Services
         {
             if (cellToMoveOn.X - selectedSquare!.Item1.X == 2) // Piece advanced two rows
             {
+
                 // BOTTOM LEFT CAPTURE
-                if (squares[cellToMoveOn.X - 1][cellToMoveOn.Y - 1].CellState == ECellState.red && selectedSquare!.Item1.X + 1 == cellToMoveOn.X - 1 && selectedSquare!.Item1.Y + 1 == cellToMoveOn.Y - 1)
-                    return new Tuple<int, int>(cellToMoveOn.X - 1, cellToMoveOn.Y - 1);
+                if (isInBoard(cellToMoveOn.X - 1, cellToMoveOn.Y - 1))
+                {
+                    if (squares[cellToMoveOn.X - 1][cellToMoveOn.Y - 1].CellState == ECellState.red && selectedSquare!.Item1.X + 1 == cellToMoveOn.X - 1 && selectedSquare!.Item1.Y + 1 == cellToMoveOn.Y - 1)
+                        return new Tuple<int, int>(cellToMoveOn.X - 1, cellToMoveOn.Y - 1);
+                }
                 // BOTTOM RIGHT CAPTURE
-                if (squares[cellToMoveOn.X - 1][cellToMoveOn.Y + 1].CellState == ECellState.red && selectedSquare!.Item1.X + 1 == cellToMoveOn.X - 1 && selectedSquare!.Item1.Y - 1 == cellToMoveOn.Y + 1)
-                    return new Tuple<int, int>(cellToMoveOn.X - 1, cellToMoveOn.Y + 1);
+                if (isInBoard(cellToMoveOn.X - 1, cellToMoveOn.Y + 1))
+                {
+                    if (squares[cellToMoveOn.X - 1][cellToMoveOn.Y + 1].CellState == ECellState.red && selectedSquare!.Item1.X + 1 == cellToMoveOn.X - 1 && selectedSquare!.Item1.Y - 1 == cellToMoveOn.Y + 1)
+                        return new Tuple<int, int>(cellToMoveOn.X - 1, cellToMoveOn.Y + 1);
+                }
+
             }
             return null;
         }
@@ -246,7 +256,7 @@ namespace Checkers.Services
 
         private bool isMovePossible(Cell cellToMoveOn)
         {
-            foreach(Cell possibleMove in selectedSquare!.Item2)
+            foreach (Cell possibleMove in selectedSquare!.Item2)
             {
                 if (cellToMoveOn.X == possibleMove.X && cellToMoveOn.Y == possibleMove.Y)
                     return true;
