@@ -127,6 +127,23 @@ namespace Checkers.Services
                         possibleMultipleJumpMoves.Add(squares[obj.X - 2][obj.Y + 2]);
                     }
                 }
+                if (squares[obj.X][obj.Y].IsKing)
+                {
+                    if (isInBoard(obj.X + 2, obj.Y - 2))
+                    {
+                        if (squares[obj.X + 1][obj.Y - 1].CellState == ECellState.white && squares[obj.X + 2][obj.Y - 2].CellState == ECellState.none)
+                        {
+                            possibleMultipleJumpMoves.Add(squares[obj.X + 2][obj.Y - 2]);
+                        }
+                    }
+                    if (isInBoard(obj.X + 2, obj.Y + 2))
+                    {
+                        if (squares[obj.X + 1][obj.Y + 1].CellState == ECellState.white && squares[obj.X + 2][obj.Y + 2].CellState == ECellState.none)
+                        {
+                            possibleMultipleJumpMoves.Add(squares[obj.X + 2][obj.Y + 2]);
+                        }
+                    }
+                }
                 return;
             }
 
@@ -144,6 +161,23 @@ namespace Checkers.Services
                     if (squares[obj.X + 1][obj.Y + 1].CellState == ECellState.red && squares[obj.X + 2][obj.Y + 2].CellState == ECellState.none)
                     {
                         possibleMultipleJumpMoves.Add(squares[obj.X + 2][obj.Y + 2]);
+                    }
+                }
+                if (squares[obj.X][obj.Y].IsKing)
+                {
+                    if (isInBoard(obj.X - 2, obj.Y - 2))
+                    {
+                        if (squares[obj.X - 1][obj.Y - 1].CellState == ECellState.white && squares[obj.X - 2][obj.Y - 2].CellState == ECellState.none)
+                        {
+                            possibleMultipleJumpMoves.Add(squares[obj.X - 2][obj.Y - 2]);
+                        }
+                    }
+                    if (isInBoard(obj.X - 2, obj.Y + 2))
+                    {
+                        if (squares[obj.X - 1][obj.Y + 1].CellState == ECellState.white && squares[obj.X - 2][obj.Y + 2].CellState == ECellState.none)
+                        {
+                            possibleMultipleJumpMoves.Add(squares[obj.X - 2][obj.Y + 2]);
+                        }
                     }
                 }
                 return;
@@ -165,6 +199,7 @@ namespace Checkers.Services
 
             squares[cellToMoveOn.X][cellToMoveOn.Y].CellState = selectedSquare!.Item1.CellState;
             squares[cellToMoveOn.X][cellToMoveOn.Y].DisplayedImage = selectedSquare!.Item1.DisplayedImage;
+            squares[cellToMoveOn.X][cellToMoveOn.Y].IsKing = selectedSquare!.Item1.IsKing;
 
             squares[selectedSquare.Item1.X][selectedSquare.Item1.Y].DisplayedImage = squares[selectedSquare.Item1.X][selectedSquare.Item1.Y].HiddenImage;
 
@@ -218,6 +253,25 @@ namespace Checkers.Services
                         return new Tuple<int, int>(cellToMoveOn.X + 1, cellToMoveOn.Y + 1);
                 }
             }
+
+            if(selectedSquare!.Item1.X - cellToMoveOn.X == -2)
+            {
+                if (squares[selectedSquare!.Item1.X][selectedSquare!.Item1.Y].IsKing)
+                {
+                    // BOTTOM LEFT CAPTURE
+                    if (isInBoard(cellToMoveOn.X - 1, cellToMoveOn.Y - 1))
+                    {
+                        if (squares[cellToMoveOn.X - 1][cellToMoveOn.Y - 1].CellState == ECellState.white && selectedSquare!.Item1.X + 1 == cellToMoveOn.X - 1 && selectedSquare!.Item1.Y + 1 == cellToMoveOn.Y - 1)
+                            return new Tuple<int, int>(cellToMoveOn.X - 1, cellToMoveOn.Y - 1);
+                    }
+                    // BOTTOM RIGHT CAPTURE
+                    if (isInBoard(cellToMoveOn.X - 1, cellToMoveOn.Y + 1))
+                    {
+                        if (squares[cellToMoveOn.X - 1][cellToMoveOn.Y + 1].CellState == ECellState.white && selectedSquare!.Item1.X + 1 == cellToMoveOn.X - 1 && selectedSquare!.Item1.Y - 1 == cellToMoveOn.Y + 1)
+                            return new Tuple<int, int>(cellToMoveOn.X - 1, cellToMoveOn.Y + 1);
+                    }
+                }
+            }
             return null;
         }
 
@@ -239,6 +293,26 @@ namespace Checkers.Services
                         return new Tuple<int, int>(cellToMoveOn.X - 1, cellToMoveOn.Y + 1);
                 }
 
+
+
+            }
+            if (cellToMoveOn.X - selectedSquare!.Item1.X == -2)
+            {
+                if (squares[selectedSquare!.Item1.X][selectedSquare!.Item1.Y].IsKing)
+                {
+                    if (isInBoard(cellToMoveOn.X + 1, cellToMoveOn.Y - 1))
+                    {
+                        // TOP LEFT CAPTURE
+                        if (squares[cellToMoveOn.X + 1][cellToMoveOn.Y - 1].CellState == ECellState.red && selectedSquare!.Item1.X - 1 == cellToMoveOn.X + 1 && selectedSquare!.Item1.Y + 1 == cellToMoveOn.Y - 1)
+                            return new Tuple<int, int>(cellToMoveOn.X + 1, cellToMoveOn.Y - 1);
+                    }
+                    if (isInBoard(cellToMoveOn.X + 1, cellToMoveOn.Y + 1))
+                    {
+                        // TOP RIGHT CAPTURE
+                        if (squares[cellToMoveOn.X + 1][cellToMoveOn.Y + 1].CellState == ECellState.red && selectedSquare!.Item1.X - 1 == cellToMoveOn.X + 1 && selectedSquare!.Item1.Y - 1 == cellToMoveOn.Y + 1)
+                            return new Tuple<int, int>(cellToMoveOn.X + 1, cellToMoveOn.Y + 1);
+                    }
+                }
             }
             return null;
         }
