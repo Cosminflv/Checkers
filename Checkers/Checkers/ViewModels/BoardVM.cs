@@ -15,19 +15,42 @@ namespace Checkers.ViewModels
     {
         private GameBusinessLogic bl;
 
+        private GameData gameData;
+
+        private GameVM gameVM;
+
+        private ObservableCollection<ObservableCollection<CellVM>> gameBoard;
+
+        public delegate void GameDataUpdatedEventHandler(GameData updatedGameData);
+        public event GameDataUpdatedEventHandler GameDataUpdated;
+
         public BoardVM(GameVM gameViewModel)
         {
             ObservableCollection<ObservableCollection<Cell>> board = Helper.InitGameBoard();
             bl = new GameBusinessLogic(board, gameViewModel.AllowMultipleJump);
             bl.RedrawBoardRequested += OnRedrawBoardRequested;
+
+            GameData = gameViewModel.GameData;
+            this.gameVM = gameViewModel;
+
             whiteRemainingPieces = bl.WhiteRemainingPieces;
             redRemainingPieces = bl.RedRemainingPieces;
             GameBoard = CellBoardToCellVMBoard(board);
             currentTurn = EPlayerType.red;
             playerWon = ECellState.none;
-        }
 
-        private ObservableCollection<ObservableCollection<CellVM>> gameBoard;
+            gameVM.GameData.RedRemainingPieces = redRemainingPieces;
+            gameVM.GameData.WhiteRemainingPieces = whiteRemainingPieces;
+            gameVM.GameData.GameBoard = bl.Squares;
+            gameVM.GameData.CurrentTurn = currentTurn;
+            gameVM.GameData.PlayerWon = playerWon;
+        }
+        
+        public GameData GameData
+        {
+            get { return gameData; }
+            set { gameData = value; OnPropertyChanged("GameData"); }  
+        }
 
         public ObservableCollection<ObservableCollection<CellVM>> GameBoard
         {
@@ -90,6 +113,14 @@ namespace Checkers.ViewModels
             CurrentTurn = bl.PlayerTurn;
             PlayerWon = bl.PlayerWon;
 
+
+            gameVM.GameData.RedRemainingPieces = redRemainingPieces;
+            gameVM.GameData.WhiteRemainingPieces = whiteRemainingPieces;
+            gameVM.GameData.GameBoard = bl.Squares;
+            gameVM.GameData.CurrentTurn = currentTurn;
+            gameVM.GameData.PlayerWon = playerWon;
+
+            GameDataUpdated?.Invoke(GameData);
         }
 
         // DELEGATES

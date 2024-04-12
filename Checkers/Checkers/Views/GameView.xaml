@@ -32,8 +32,8 @@
         <Label Content="Game" Style="{StaticResource CustomLabelStyle}"/>
 
         <Button Content="New Game" Command="{Binding SwitchToBoardCommand}" HorizontalAlignment="Center" Margin="0,120,0,0" VerticalAlignment="Top" Height="55" Width="180" />
-        <Button Content="Save Game" HorizontalAlignment="Center" Margin="0,180,0,0" VerticalAlignment="Top" Height="55" Width="180"/>
-        <Button Content="Open Game" HorizontalAlignment="Center" Margin="0,240,0,0" VerticalAlignment="Top" Height="55" Width="180"/>
+        <Button Content="Save Game" Command="{Binding SaveGameCommand}" HorizontalAlignment="Center" Margin="0,180,0,0" VerticalAlignment="Top" Height="55" Width="180"/>
+        <Button Content="Open Game" Command="{Binding OpenGameCommand}" HorizontalAlignment="Center" Margin="0,240,0,0" VerticalAlignment="Top" Height="55" Width="180"/>
         <Button Content="Statistics" Command="{Binding SwitchToStatisticsCommand}" HorizontalAlignment="Center" Margin="0,300,0,0" VerticalAlignment="Top" Height="55" Width="180"/>
         <CheckBox Content="Allow Multiple Jump" IsChecked="{Binding AllowMultipleJump}" HorizontalAlignment="Left" Margin="310,375,0,0" VerticalAlignment="Top"/>
 

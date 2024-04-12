@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using static System.Net.Mime.MediaTypeNames;
 
@@ -22,57 +23,25 @@ namespace Checkers.Models
 
     class Cell : BaseNotification
     {
-        private int x;
-        private int y;
-        private string displayedImage;
-        private string hiddenImage;
-        private ECellState cellState;
-        private bool isKing;
+        // Properties
+        public int X { get; set; }
+        public int Y { get; set; }
+        public string DisplayedImage { get; set; }
+        public string HiddenImage { get; set; }
+        public ECellState CellState { get; set; }
+        public bool IsKing { get; set; }
 
-        public Cell(int x, int y, string hidden, string displayed, ECellState cellstate, bool isKing)
+        // Deserialization constructor
+        [JsonConstructor]
+        public Cell(int x, int y, string hiddenImage, string displayedImage, ECellState cellState, bool isKing)
         {
-            this.X = x;
-            this.Y = y;
-            this.HiddenImage = hidden;
-            this.DisplayedImage = displayed;
-            this.CellState = cellstate;
-            this.isKing = isKing;
+            X = x;
+            Y = y;
+            HiddenImage = hiddenImage;
+            DisplayedImage = displayedImage;
+            CellState = cellState;
+            IsKing = isKing;
         }
 
-        public ECellState CellState
-        {
-            get { return cellState; }
-            set { cellState = value; NotifyPropertyChanged("CellState"); }
-        }
-
-        public int X
-        {
-            get { return x; }
-            set { x = value; NotifyPropertyChanged("X"); }
-        }
-
-        public int Y
-        {
-            get { return y; }
-            set { y = value; NotifyPropertyChanged("Y"); }
-        }
-
-        public string DisplayedImage
-        {
-            get { return displayedImage; }
-            set { displayedImage = value; NotifyPropertyChanged("DisplayedImage"); }
-        }
-
-        public string HiddenImage
-        {
-            get { return hiddenImage; }
-            set { hiddenImage = value; NotifyPropertyChanged("HiddenImage");}
-        }
-
-        public bool IsKing
-        {
-            get { return isKing; }
-            set { isKing = value; NotifyPropertyChanged("IsKing"); }
-        }
     }
 }

@@ -29,6 +29,8 @@ namespace Checkers.ViewModels
 
         public MainWindowVM()
         {
+            GameViewModel = new GameVM();
+            BoardViewModel = new BoardVM(GameViewModel);
             switchToHome();
         }
 
@@ -41,7 +43,6 @@ namespace Checkers.ViewModels
 
         public void switchToGame()
         {
-            GameViewModel = new GameVM();
             GameViewModel.OnSwitchToHome = switchToHome;
             GameViewModel.OnSwitchToBoard = switchToBoard;
             GameViewModel.OnSwitchToStatistics = switchToStatistics;
@@ -58,7 +59,6 @@ namespace Checkers.ViewModels
 
         public void switchToBoard()
         {
-            BoardViewModel = new BoardVM(GameViewModel);
             BoardViewModel.OnSwitchToGame = switchToGame;
             SelectedVM = BoardViewModel;
         }
