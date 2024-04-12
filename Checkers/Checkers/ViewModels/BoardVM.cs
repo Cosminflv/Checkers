@@ -21,23 +21,32 @@ namespace Checkers.ViewModels
 
         private ObservableCollection<ObservableCollection<CellVM>> gameBoard;
 
-        public delegate void GameDataUpdatedEventHandler(GameData updatedGameData);
-        public event GameDataUpdatedEventHandler GameDataUpdated;
-
         public BoardVM(GameVM gameViewModel)
         {
-            ObservableCollection<ObservableCollection<Cell>> board = Helper.InitGameBoard();
-            bl = new GameBusinessLogic(board, gameViewModel.AllowMultipleJump);
-            bl.RedrawBoardRequested += OnRedrawBoardRequested;
+            gameData = gameViewModel.GameData;
+            if (gameData != null)
+            {
+                WhiteRemainingPieces = gameData.WhiteRemainingPieces;
+                RedRemainingPieces = gameData.RedRemainingPieces;
+                bl = new GameBusinessLogic(gameData.GameBoard, gameData.AllowMultipleJump);
+                bl.RedrawBoardRequested += OnRedrawBoardRequested;
+                GameBoard = CellBoardToCellVMBoard(gameData.GameBoard);
+                CurrentTurn = gameData.CurrentTurn;
+                PlayerWon = gameData.PlayerWon;
+            }
+            else
+            {
+                ObservableCollection<ObservableCollection<Cell>> board = Helper.InitGameBoard();
+                bl = new GameBusinessLogic(board, gameViewModel.AllowMultipleJump);
+                bl.RedrawBoardRequested += OnRedrawBoardRequested;
 
-            GameData = gameViewModel.GameData;
+                whiteRemainingPieces = bl.WhiteRemainingPieces;
+                redRemainingPieces = bl.RedRemainingPieces;
+                GameBoard = CellBoardToCellVMBoard(board);
+                currentTurn = EPlayerType.red;
+                playerWon = ECellState.none;
+            }
             this.gameVM = gameViewModel;
-
-            whiteRemainingPieces = bl.WhiteRemainingPieces;
-            redRemainingPieces = bl.RedRemainingPieces;
-            GameBoard = CellBoardToCellVMBoard(board);
-            currentTurn = EPlayerType.red;
-            playerWon = ECellState.none;
 
             gameVM.GameData.RedRemainingPieces = redRemainingPieces;
             gameVM.GameData.WhiteRemainingPieces = whiteRemainingPieces;
@@ -119,8 +128,6 @@ namespace Checkers.ViewModels
             gameVM.GameData.GameBoard = bl.Squares;
             gameVM.GameData.CurrentTurn = currentTurn;
             gameVM.GameData.PlayerWon = playerWon;
-
-            GameDataUpdated?.Invoke(GameData);
         }
 
         // DELEGATES

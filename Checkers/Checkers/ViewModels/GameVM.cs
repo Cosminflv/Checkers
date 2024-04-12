@@ -13,9 +13,7 @@ namespace Checkers.ViewModels
 
         public GameVM()
         {
-            gameData = new GameData(Helper.InitGameBoard(), 12, 12, EPlayerType.red, ECellState.none);
-            BoardVM boardVMInstance = new BoardVM(this); // Pass reference to GameVM
-            boardVMInstance.GameDataUpdated += OnBoardVMGameDataUpdated;
+            gameData = new GameData(Helper.InitGameBoard(), 12, 12, EPlayerType.red, ECellState.none, allowMultipleJump);
         }
 
         public GameData GameData
@@ -47,7 +45,7 @@ namespace Checkers.ViewModels
         public delegate void SwitchToHome();
         public SwitchToHome OnSwitchToHome { get; set; }
 
-        public delegate void SwitchToBoard();
+        public delegate void SwitchToBoard(GameData? loadedGameData);
         public SwitchToBoard OnSwitchToBoard { get; set; }
 
         public delegate void SwitchToStatistics();
@@ -91,7 +89,7 @@ namespace Checkers.ViewModels
             {
                 if (switchToBoardCommand == null) 
                 {
-                    switchToBoardCommand = new RelayPagesCommand(o => true, o => { OnSwitchToBoard(); });
+                    switchToBoardCommand = new RelayPagesCommand(o => true, o => { OnSwitchToBoard(null); });
                 }
                 return switchToBoardCommand;
             }
@@ -126,12 +124,6 @@ namespace Checkers.ViewModels
         }
 
         // METHODS
-
-        private void OnBoardVMGameDataUpdated(GameData updatedGameData)
-        {
-            // Update GameData property in GameVM with the new data from BoardVM
-            GameData = updatedGameData;
-        }
 
         private void OnSaveGame()
         {
@@ -177,6 +169,7 @@ namespace Checkers.ViewModels
 
                     // Update GameData property in GameVM with openedGameData
                     GameData = openedGameData;
+                    OnSwitchToBoard(GameData);
                 }
                 catch (Exception ex)
                 {
