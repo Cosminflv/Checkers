@@ -29,15 +29,17 @@ namespace Checkers.Services
             AllowMultipleJump = allowMultipleJump;
         }
 
-        public GameData() 
+        public GameData(bool allowMultipleJump) 
         {
             GameBoard = Helper.InitGameBoard();
             WhiteRemainingPieces = 12;
             RedRemainingPieces = 12;
             CurrentTurn = EPlayerType.red;
             PlayerWon = ECellState.none;
-            AllowMultipleJump = false;
-        }   
+            AllowMultipleJump = allowMultipleJump;
+        }
+        
+        public GameData() { }
 
         // Method to serialize the GameData object to JSON string
         public string SerializeToJson()

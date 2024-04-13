@@ -114,6 +114,7 @@ namespace Checkers.ViewModels
             CurrentTurn = bl.PlayerTurn;
             PlayerWon = bl.PlayerWon;
 
+            if(gameVM.GameData != null)
             UpdateGameData();
             UpdateStatistics();
         }

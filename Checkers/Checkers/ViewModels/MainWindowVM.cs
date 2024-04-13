@@ -71,11 +71,13 @@ namespace Checkers.ViewModels
 
         public void switchToBoard(GameData? loadedGameData)
         {
-            GameViewModel.GameData = new GameData();
             if (loadedGameData != null)
             {
                 GameViewModel.GameData = loadedGameData;
-             
+            }
+            else
+            {
+                GameViewModel.GameData = new GameData(GameViewModel.AllowMultipleJump);
             }
             BoardViewModel = new BoardVM(GameViewModel, GameStatistics);
             BoardViewModel.OnSwitchToGame = switchToGame;
