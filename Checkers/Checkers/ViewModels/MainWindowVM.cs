@@ -36,7 +36,7 @@ namespace Checkers.ViewModels
         {
             GameViewModel = new GameVM();
             GameStatistics = new GameStatistics();
-            OnLoadStatistics();
+            GameStatistics.OnLoadStatistics();
             BoardViewModel = new BoardVM(GameViewModel, GameStatistics);
             switchToHome();
         }
@@ -87,29 +87,6 @@ namespace Checkers.ViewModels
             StatisticsViewModel = new StatisticsVM(GameStatistics);
             StatisticsViewModel.OnSwitchToGame = switchToGame;
             SelectedVM = StatisticsViewModel;
-        }
-
-        private void OnLoadStatistics()
-        {
-
-            string filePath = "../../../Resources/Statistics.json";
-
-            try
-            {
-                // Read JSON data from the selected file
-                string jsonData = File.ReadAllText(filePath);
-
-                // Deserialize JSON data into GameData object
-                GameStatistics loadedGameStatistics = JsonSerializer.Deserialize<GameStatistics>(jsonData);
-
-                GameStatistics = loadedGameStatistics;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error opening file: {ex.Message}");
-                // You can add more sophisticated error handling as needed
-            }
-
         }
     }
 }

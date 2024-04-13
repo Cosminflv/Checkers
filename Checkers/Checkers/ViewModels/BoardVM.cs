@@ -189,36 +189,15 @@ namespace Checkers.ViewModels
                 GameStatistics.RedWins += 1;
                 if (gameData.RedRemainingPieces > statistics.MaxPiecesLeft)
                     GameStatistics.MaxPiecesLeft = gameData.RedRemainingPieces;
-                OnSaveStatistics();
+                GameStatistics.OnSaveStatistics();
             }
             if (gameData.PlayerWon == ECellState.white)
             {
                 GameStatistics.WhiteWins += 1;
                 if (gameData.WhiteRemainingPieces > statistics.MaxPiecesLeft)
                     GameStatistics.MaxPiecesLeft = gameData.WhiteRemainingPieces;
-                OnSaveStatistics();
+                GameStatistics.OnSaveStatistics();
             }
-        }
-
-        private void OnSaveStatistics()
-        {
-            string jsonData = statistics.SerializeToJson();
-
-            // Get the selected file path
-            string filePath = "../../../Resources/Statistics.json";
-
-            try
-            {
-                // Write JSON data to the selected file
-                File.WriteAllText(filePath, jsonData);
-            }
-            catch (Exception ex)
-            {
-                // Handle any exceptions that occur during file write
-                Console.WriteLine($"Error saving file: {ex.Message}");
-                // You can add more sophisticated error handling as needed
-            }
-
         }
     }
 }

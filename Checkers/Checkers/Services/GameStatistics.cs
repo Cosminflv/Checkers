@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Checkers.ViewModels;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.Json;
@@ -46,15 +48,53 @@ namespace Checkers.Services
         }
 
         // Method to serialize the GameData object to JSON string
-        public string SerializeToJson()
+        private string SerializeToJson()
         {
             return JsonSerializer.Serialize(this);
         }
 
-        // Method to deserialize JSON string to GameData object
-        public static GameStatistics DeserializeFromJson(string jsonString)
+        public void OnLoadStatistics()
         {
-            return JsonSerializer.Deserialize<GameStatistics>(jsonString);
+            string filePath = "../../../Resources/Statistics.json";
+
+            try
+            {
+                // Read JSON data from the selected file
+                string jsonData = File.ReadAllText(filePath);
+
+                // Deserialize JSON data into GameData object
+                GameStatistics loadedGameStatistics = JsonSerializer.Deserialize<GameStatistics>(jsonData);
+
+                this.whiteWins = loadedGameStatistics.whiteWins;
+                this.redWins = loadedGameStatistics.redWins;
+                this.maxPiecesLeft = loadedGameStatistics.maxPiecesLeft;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error opening file: {ex.Message}");
+                // You can add more sophisticated error handling as needed
+            }
+        }
+
+        public void OnSaveStatistics()
+        {
+            string jsonData = this.SerializeToJson();
+
+            // Get the selected file path
+            string filePath = "../../../Resources/Statistics.json";
+
+            try
+            {
+                // Write JSON data to the selected file
+                File.WriteAllText(filePath, jsonData);
+            }
+            catch (Exception ex)
+            {
+                // Handle any exceptions that occur during file write
+                Console.WriteLine($"Error saving file: {ex.Message}");
+                // You can add more sophisticated error handling as needed
+            }
+
         }
     }
 }
