@@ -1,11 +1,4 @@
-﻿using Checkers.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Text.Json;
-using System.Threading.Tasks;
+﻿using System;
 
 namespace Checkers.Services
 {
@@ -14,25 +7,19 @@ namespace Checkers.Services
         private int whiteWins;
         private int redWins;
         private int maxPiecesLeft;
+        private JsonHandler jsonHandler;
 
-        public GameStatistics() 
+        public GameStatistics()
         {
             whiteWins = 0;
-            redWins = 0; 
+            redWins = 0;
             maxPiecesLeft = 0;
+            jsonHandler = new JsonHandler();
         }
-
-        public GameStatistics(int whiteWins, int redWins, int maxPiecesLeft)
-        {
-            this.whiteWins = whiteWins;
-            this.redWins = redWins;
-            this.maxPiecesLeft = maxPiecesLeft;
-        }
-
         public int WhiteWins
         {
             get { return whiteWins; }
-            set { whiteWins = value;}
+            set { whiteWins = value; }
         }
 
         public int RedWins
@@ -47,23 +34,14 @@ namespace Checkers.Services
             set { maxPiecesLeft = value; }
         }
 
-        // Method to serialize the GameData object to JSON string
-        private string SerializeToJson()
-        {
-            return JsonSerializer.Serialize(this);
-        }
-
         public void OnLoadStatistics()
         {
             string filePath = "../../../Resources/Statistics.json";
 
             try
             {
-                // Read JSON data from the selected file
-                string jsonData = File.ReadAllText(filePath);
-
-                // Deserialize JSON data into GameData object
-                GameStatistics loadedGameStatistics = JsonSerializer.Deserialize<GameStatistics>(jsonData);
+                // Load statistics from JSON file using JsonHandler
+                GameStatistics loadedGameStatistics = jsonHandler.LoadFromJson<GameStatistics>(filePath);
 
                 this.whiteWins = loadedGameStatistics.whiteWins;
                 this.redWins = loadedGameStatistics.redWins;
@@ -71,30 +49,25 @@ namespace Checkers.Services
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error opening file: {ex.Message}");
+                Console.WriteLine($"Error loading file: {ex.Message}");
                 // You can add more sophisticated error handling as needed
             }
         }
 
         public void OnSaveStatistics()
         {
-            string jsonData = this.SerializeToJson();
-
-            // Get the selected file path
             string filePath = "../../../Resources/Statistics.json";
 
             try
             {
-                // Write JSON data to the selected file
-                File.WriteAllText(filePath, jsonData);
+                // Save statistics to JSON file using JsonHandler
+                jsonHandler.SaveToJson<GameStatistics>(filePath, this);
             }
             catch (Exception ex)
             {
-                // Handle any exceptions that occur during file write
                 Console.WriteLine($"Error saving file: {ex.Message}");
                 // You can add more sophisticated error handling as needed
             }
-
         }
     }
 }

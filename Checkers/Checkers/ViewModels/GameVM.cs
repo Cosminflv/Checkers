@@ -13,16 +13,20 @@ namespace Checkers.ViewModels
 
         private GameStatistics statistics;
 
+        private JsonHandler jsonHandler;
+
         public GameVM()
         {
             gameData = new GameData(Helper.InitGameBoard(), 12, 12, EPlayerType.red, ECellState.none, allowMultipleJump);
+            jsonHandler = new JsonHandler();
         }
 
         public GameStatistics Statistics
         {
             get { return statistics; }
-            set 
-            {   statistics = value; 
+            set
+            {
+                statistics = value;
                 OnPropertyChanged("Statistics");
             }
         }
@@ -138,23 +142,19 @@ namespace Checkers.ViewModels
 
         private void OnSaveGame()
         {
-            string jsonData = GameData.SerializeToJson();
-
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.Filter = "JSON files (*.json)|*.json";
+
             if (saveFileDialog.ShowDialog() == true)
             {
-                // Get the selected file path
                 string filePath = saveFileDialog.FileName;
 
                 try
                 {
-                    // Write JSON data to the selected file
-                    File.WriteAllText(filePath, jsonData);
+                    jsonHandler.SaveToJson(filePath, gameData);
                 }
                 catch (Exception ex)
                 {
-                    // Handle any exceptions that occur during file write
                     Console.WriteLine($"Error saving file: {ex.Message}");
                     // You can add more sophisticated error handling as needed
                 }
@@ -165,20 +165,14 @@ namespace Checkers.ViewModels
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "JSON files (*.json)|*.json";
+
             if (openFileDialog.ShowDialog() == true)
             {
-                // Get the selected file path
                 string filePath = openFileDialog.FileName;
 
                 try
                 {
-                    // Read JSON data from the selected file
-                    string jsonData = File.ReadAllText(filePath);
-
-                    // Deserialize JSON data into GameData object
-                    GameData openedGameData = JsonSerializer.Deserialize<GameData>(jsonData);
-
-                    // Update GameData property in GameVM with openedGameData
+                    GameData openedGameData = jsonHandler.LoadFromJson<GameData>(filePath);
                     GameData = openedGameData;
                     OnSwitchToBoard(GameData);
                 }
