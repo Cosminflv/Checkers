@@ -1,28 +1,78 @@
 ﻿using Checkers.Models;
 using Checkers.Services;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.IO;
-using System.Linq;
-using System.Security.AccessControl;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace Checkers.ViewModels
 {
     class BoardVM : BaseVM
     {
+        // Private Fields
         private GameBusinessLogic bl;
-
         private GameData gameData;
-
         private GameVM gameVM;
-
         private ObservableCollection<ObservableCollection<CellVM>> gameBoard;
-
         private GameStatistics statistics;
+        private int whiteRemainingPieces;
+        private int redRemainingPieces;
+        private EPlayerType currentTurn;
+        private ECellState playerWon;
+
+        // Public Properties
+        public GameStatistics GameStatistics
+        {
+            get { return statistics; }
+            set { statistics = value; OnPropertyChanged("Statistics"); }
+        }
+
+        public GameData GameData
+        {
+            get { return gameData; }
+            set { gameData = value; OnPropertyChanged("GameData"); }
+        }
+
+        public ObservableCollection<ObservableCollection<CellVM>> GameBoard
+        {
+            get { return gameBoard; }
+            set { gameBoard = value; OnPropertyChanged("GameBoard"); }
+        }
+
+        public int WhiteRemainingPieces
+        {
+            get { return whiteRemainingPieces; }
+            set { whiteRemainingPieces = value; OnPropertyChanged("WhiteRemainingPieces"); }
+        }
+
+        public int RedRemainingPieces
+        {
+            get { return redRemainingPieces; }
+            set { redRemainingPieces = value; OnPropertyChanged("RedRemainingPieces"); }
+        }
+
+        public EPlayerType CurrentTurn
+        {
+            get { return currentTurn; }
+            set
+            {
+                if (currentTurn != value)
+                {
+                    currentTurn = value;
+                    OnPropertyChanged("CurrentTurn");
+                }
+            }
+        }
+        public ECellState PlayerWon
+        {
+            get { return playerWon; }
+            set
+            {
+                if (playerWon != value)
+                {
+                    playerWon = value;
+                    OnPropertyChanged("PlayerWon");
+                }
+            }
+        }
 
         public BoardVM(GameVM gameViewModel, GameStatistics statistics)
         {
@@ -52,75 +102,7 @@ namespace Checkers.ViewModels
             this.gameVM = gameViewModel;
             GameStatistics = statistics;
 
-            gameVM.GameData.RedRemainingPieces = redRemainingPieces;
-            gameVM.GameData.WhiteRemainingPieces = whiteRemainingPieces;
-            gameVM.GameData.GameBoard = bl.Squares;
-            gameVM.GameData.CurrentTurn = currentTurn;
-            gameVM.GameData.PlayerWon = playerWon;
-        }
-
-        public GameStatistics GameStatistics
-        {
-            get { return statistics; }
-            set {  statistics = value; OnPropertyChanged("Statistics"); }
-        }
-        
-        public GameData GameData
-        {
-            get { return gameData; }
-            set { gameData = value; OnPropertyChanged("GameData"); }  
-        }
-
-        public ObservableCollection<ObservableCollection<CellVM>> GameBoard
-        {
-            get { return gameBoard; }
-            set { gameBoard = value; OnPropertyChanged("GameBoard"); }
-        }
-
-        private int whiteRemainingPieces;
-
-        private int redRemainingPieces;
-
-        private EPlayerType currentTurn;
-
-        private ECellState playerWon;
-
-        public int WhiteRemainingPieces
-        {
-            get { return whiteRemainingPieces; }
-            set { whiteRemainingPieces = value; OnPropertyChanged("WhiteRemainingPieces"); }
-        }
-
-        public int RedRemainingPieces
-        {
-            get { return redRemainingPieces; }
-            set { redRemainingPieces = value; OnPropertyChanged("RedRemainingPieces"); }
-        }
-
-        public EPlayerType CurrentTurn
-        {
-            get { return currentTurn; }
-            set
-            {
-                if (currentTurn != value)
-                {
-                    currentTurn = value;
-                    OnPropertyChanged("CurrentTurn");
-                }
-            }
-        }
-
-        public ECellState PlayerWon
-        {
-            get { return playerWon; }
-            set
-            {
-                if (playerWon != value)
-                {
-                    playerWon = value;
-                    OnPropertyChanged("PlayerWon");
-                }
-            }
+            UpdateGameData();
         }
 
         private void OnRedrawBoardRequested(object sender, EventArgs e)
@@ -132,13 +114,7 @@ namespace Checkers.ViewModels
             CurrentTurn = bl.PlayerTurn;
             PlayerWon = bl.PlayerWon;
 
-
-            gameVM.GameData.RedRemainingPieces = redRemainingPieces;
-            gameVM.GameData.WhiteRemainingPieces = whiteRemainingPieces;
-            gameVM.GameData.GameBoard = bl.Squares;
-            gameVM.GameData.CurrentTurn = currentTurn;
-            gameVM.GameData.PlayerWon = playerWon;
-
+            UpdateGameData();
             UpdateStatistics();
         }
 
@@ -198,6 +174,15 @@ namespace Checkers.ViewModels
                     GameStatistics.MaxPiecesLeft = gameData.WhiteRemainingPieces;
                 GameStatistics.OnSaveStatistics();
             }
+        }
+
+        private void UpdateGameData()
+        {
+            gameVM.GameData.RedRemainingPieces = redRemainingPieces;
+            gameVM.GameData.WhiteRemainingPieces = whiteRemainingPieces;
+            gameVM.GameData.GameBoard = bl.Squares;
+            gameVM.GameData.CurrentTurn = currentTurn;
+            gameVM.GameData.PlayerWon = playerWon;
         }
     }
 }
