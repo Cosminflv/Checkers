@@ -28,13 +28,13 @@ namespace Checkers.Services
         private bool multipleJumpsAllowed;
 
         private ObservableCollection<Cell> possibleMultipleJumpMoves;
-        public GameBusinessLogic(ObservableCollection<ObservableCollection<Cell>> squares, bool multipleJumps)
+        public GameBusinessLogic(ObservableCollection<ObservableCollection<Cell>> squares, bool multipleJumps, int? wP, int? rP, EPlayerType? pTurn, ECellState? pWon)
         {
             this.squares = squares;
-            whiteRemainingPieces = 12;
-            redRemainingPieces = 12;
-            playerTurn = EPlayerType.red;
-            playerWon = ECellState.none;
+            whiteRemainingPieces = wP.HasValue ? wP.Value : 12;
+            redRemainingPieces = rP.HasValue ? rP.Value : 12;
+            playerTurn = pTurn.HasValue ? pTurn.Value: 0;
+            playerWon = pWon.HasValue ? pWon.Value : 0;
             multipleJumpsAllowed = multipleJumps;
             possibleMultipleJumpMoves = new ObservableCollection<Cell>();
         }

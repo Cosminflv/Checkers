@@ -17,7 +17,6 @@ namespace Checkers.Services
         public int RedRemainingPieces { get; set; }
         public EPlayerType CurrentTurn { get; set; }
         public ECellState PlayerWon { get; set; }
-
         public bool AllowMultipleJump {  get; set; }
 
         public GameData(ObservableCollection<ObservableCollection<Cell>> gameBoard, int whiteRemainingPieces, int redRemainingPieces, EPlayerType currentTurn, ECellState playerWon, bool allowMultipleJump)

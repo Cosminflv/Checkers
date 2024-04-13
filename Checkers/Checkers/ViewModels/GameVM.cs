@@ -11,9 +11,20 @@ namespace Checkers.ViewModels
     {
         private GameData gameData;
 
+        private GameStatistics statistics;
+
         public GameVM()
         {
             gameData = new GameData(Helper.InitGameBoard(), 12, 12, EPlayerType.red, ECellState.none, allowMultipleJump);
+        }
+
+        public GameStatistics Statistics
+        {
+            get { return statistics; }
+            set 
+            {   statistics = value; 
+                OnPropertyChanged("Statistics");
+            }
         }
 
         public GameData GameData
@@ -87,7 +98,7 @@ namespace Checkers.ViewModels
         {
             get
             {
-                if (switchToBoardCommand == null) 
+                if (switchToBoardCommand == null)
                 {
                     switchToBoardCommand = new RelayPagesCommand(o => true, o => { OnSwitchToBoard(null); });
                 }
@@ -101,11 +112,11 @@ namespace Checkers.ViewModels
         {
             get
             {
-                if(buttonSaveGameCommand == null)
+                if (buttonSaveGameCommand == null)
                 {
                     buttonSaveGameCommand = new RelayPagesCommand(o => true, o => { OnSaveGame(); });
                 }
-            return buttonSaveGameCommand;
+                return buttonSaveGameCommand;
             }
         }
 
@@ -115,7 +126,7 @@ namespace Checkers.ViewModels
         {
             get
             {
-                if(buttonOpenGameCommand == null)
+                if (buttonOpenGameCommand == null)
                 {
                     buttonOpenGameCommand = new RelayPagesCommand(o => true, o => { OnOpenGame(); });
                 }

@@ -3,6 +3,7 @@ using Checkers.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Security.AccessControl;
 using System.Text;
@@ -21,14 +22,16 @@ namespace Checkers.ViewModels
 
         private ObservableCollection<ObservableCollection<CellVM>> gameBoard;
 
-        public BoardVM(GameVM gameViewModel)
+        private GameStatistics statistics;
+
+        public BoardVM(GameVM gameViewModel, GameStatistics statistics)
         {
             gameData = gameViewModel.GameData;
             if (gameData != null)
             {
                 WhiteRemainingPieces = gameData.WhiteRemainingPieces;
                 RedRemainingPieces = gameData.RedRemainingPieces;
-                bl = new GameBusinessLogic(gameData.GameBoard, gameData.AllowMultipleJump);
+                bl = new GameBusinessLogic(gameData.GameBoard, gameData.AllowMultipleJump, gameData.WhiteRemainingPieces, gameData.RedRemainingPieces, gameData.CurrentTurn, gameData.PlayerWon);
                 bl.RedrawBoardRequested += OnRedrawBoardRequested;
                 GameBoard = CellBoardToCellVMBoard(gameData.GameBoard);
                 CurrentTurn = gameData.CurrentTurn;
@@ -37,7 +40,7 @@ namespace Checkers.ViewModels
             else
             {
                 ObservableCollection<ObservableCollection<Cell>> board = Helper.InitGameBoard();
-                bl = new GameBusinessLogic(board, gameViewModel.AllowMultipleJump);
+                bl = new GameBusinessLogic(board, gameViewModel.AllowMultipleJump, null, null, null, null);
                 bl.RedrawBoardRequested += OnRedrawBoardRequested;
 
                 whiteRemainingPieces = bl.WhiteRemainingPieces;
@@ -47,12 +50,19 @@ namespace Checkers.ViewModels
                 playerWon = ECellState.none;
             }
             this.gameVM = gameViewModel;
+            GameStatistics = statistics;
 
             gameVM.GameData.RedRemainingPieces = redRemainingPieces;
             gameVM.GameData.WhiteRemainingPieces = whiteRemainingPieces;
             gameVM.GameData.GameBoard = bl.Squares;
             gameVM.GameData.CurrentTurn = currentTurn;
             gameVM.GameData.PlayerWon = playerWon;
+        }
+
+        public GameStatistics GameStatistics
+        {
+            get { return statistics; }
+            set {  statistics = value; OnPropertyChanged("Statistics"); }
         }
         
         public GameData GameData
@@ -128,11 +138,13 @@ namespace Checkers.ViewModels
             gameVM.GameData.GameBoard = bl.Squares;
             gameVM.GameData.CurrentTurn = currentTurn;
             gameVM.GameData.PlayerWon = playerWon;
+
+            UpdateStatistics();
         }
 
         // DELEGATES
 
-        public delegate void SwitchToGame();
+        public delegate void SwitchToGame(GameStatistics s);
         public SwitchToGame OnSwitchToGame { get; set; }
 
         // COMMANDS
@@ -145,7 +157,7 @@ namespace Checkers.ViewModels
             {
                 if (switchToGameCommand == null)
                 {
-                    switchToGameCommand = new RelayPagesCommand(o => true, o => { OnSwitchToGame(); });
+                    switchToGameCommand = new RelayPagesCommand(o => true, o => { OnSwitchToGame(GameStatistics); });
                 }
 
                 return switchToGameCommand;
@@ -168,6 +180,45 @@ namespace Checkers.ViewModels
                 result.Add(line);
             }
             return result;
+        }
+
+        private void UpdateStatistics()
+        {
+            if (gameData.PlayerWon == ECellState.red)
+            {
+                GameStatistics.RedWins += 1;
+                if (gameData.RedRemainingPieces > statistics.MaxPiecesLeft)
+                    GameStatistics.MaxPiecesLeft = gameData.RedRemainingPieces;
+                OnSaveStatistics();
+            }
+            if (gameData.PlayerWon == ECellState.white)
+            {
+                GameStatistics.WhiteWins += 1;
+                if (gameData.WhiteRemainingPieces > statistics.MaxPiecesLeft)
+                    GameStatistics.MaxPiecesLeft = gameData.WhiteRemainingPieces;
+                OnSaveStatistics();
+            }
+        }
+
+        private void OnSaveStatistics()
+        {
+            string jsonData = statistics.SerializeToJson();
+
+            // Get the selected file path
+            string filePath = "../../../Resources/Statistics.json";
+
+            try
+            {
+                // Write JSON data to the selected file
+                File.WriteAllText(filePath, jsonData);
+            }
+            catch (Exception ex)
+            {
+                // Handle any exceptions that occur during file write
+                Console.WriteLine($"Error saving file: {ex.Message}");
+                // You can add more sophisticated error handling as needed
+            }
+
         }
     }
 }

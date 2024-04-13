@@ -1,4 +1,5 @@
-﻿    using System.Windows.Input;
+﻿using Checkers.Services;
+using System.Windows.Input;
 
     namespace Checkers.ViewModels
     {
@@ -15,7 +16,7 @@
                 {
                     if(switchToGameCommand == null)
                     {
-                        switchToGameCommand = new RelayPagesCommand(o => true, o => { OnSwitchToGame(); });
+                        switchToGameCommand = new RelayPagesCommand(o => true, o => { OnSwitchToGame(null); });
                     }
 
                     return switchToGameCommand;
@@ -39,7 +40,7 @@
 
             //DELEGATES
 
-            public delegate void SwitchToGame();
+            public delegate void SwitchToGame(GameStatistics? s);
             public SwitchToGame OnSwitchToGame { get; set; }
 
             public delegate void SwitchToAbout();
